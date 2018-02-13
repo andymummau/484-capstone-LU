@@ -99,10 +99,10 @@ public class VisitorAPI extends Application {
     @Consumes("application/json")
     public String newToDo(Visitor visitor) {
       if(store == null) {
-    	  return String.format("Hello %s!", visitor.getName());
+    	  return String.format("Hello and welcome %s!", visitor.getName());
       }
       store.persist(visitor);
-      return String.format("Hello %s! I've added you to the database.", visitor.getName());
+      return String.format("Hello and welcome to %s! I've added you to the database.", visitor.getName());
 
     }
 
