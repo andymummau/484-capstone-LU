@@ -82,7 +82,7 @@ public class Visitor {
 	 *            The visitorName to set.
 	 */
 	public void setName(String visitorName) {
-		this.name = visitorName + "carmel";
+		this.name = visitorName + "chocolate";
 	}
 
 }
