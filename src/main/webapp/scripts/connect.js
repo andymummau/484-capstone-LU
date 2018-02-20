@@ -1,5 +1,5 @@
 //Submit data when enter key is pressed
-        $('#user_name').keydown(function(e) {
+        /*$('#user_name').keydown(function(e) {
         	var name = $('#user_name').val();
             if (e.which == 13 && name.length > 0) { //catch Enter key
                 $('#nameInput').hide();
@@ -16,11 +16,11 @@
                     getNames();
                 });
             }
-        });
+        });*/
 
         //Retreive all the visitors from the database
         function getNames(){
-          $.get("./api/visitors")
+          $.get("api/visitors")
               .done(function(data) {
                   if(data.length > 0) {
                     data.forEach(function(element, index) {
