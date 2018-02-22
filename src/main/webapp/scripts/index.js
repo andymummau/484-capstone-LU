@@ -70,7 +70,7 @@ angular
      });
 
    //console.log($scope.chips);
-   //$scope.chips = ['The','quick','brown','fox','jumped','over','the','lazy','dog'];
+   //$scope.chips = ["Katie","Pedrocarmel","Noah","Wow","IBM","David","Andycarmel","Drew","Jessicacarmel","Jerry","Andy"];
 });
 
 /*angular

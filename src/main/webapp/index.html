@@ -59,6 +59,9 @@
               <p>{{chips}}</p>
           </md-card-title-text>
         </md-card-title>
+        <md-content layout="row" layout-align="end center">
+            <md-button ng-repeat="x in chips">{{x}}</md-button>
+        </md-content>    
         <md-card-actions layout="row" layout-align="end center">
           <md-button>Clear Text</md-button>
           <md-button class="md-raised md-primary" ng-click="viewTranslation($event)">Translate</md-button>
