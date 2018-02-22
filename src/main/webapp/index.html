@@ -55,10 +55,8 @@
           <md-card-title-text>
             <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
             <span class="md-subhead"></span>
-              <md-chips ng-model="chips" md-enable-chip-edit="true">
-              </md-chips>
-              <p ng-model="chips"></p>
-              <p id="databaseNames" class="lead text-center"></p>
+              <md-chips ng-model="chips"></md-chips>
+              <p>{{chips}}</p>
           </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
@@ -107,8 +105,6 @@ Use of this source code is governed by an MIT-style license that can be foundin 
 <script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script  src="scripts/index.js"></script>
-  <script src="antixss.js" type="text/javascript"></script>
-  <script src="scripts/connect.js" type="text/javascript"></script>
 
 </body>
 </html>

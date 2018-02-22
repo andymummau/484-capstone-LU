@@ -58,8 +58,18 @@ angular
     $mdDialog.hide(answer);
   };
     }
-   $scope.chips = $http.get('api/visitors');
-   console.log($scope.chips);
+   //$scope.chips = $http.get('api/visitors');
+
+   $http.get("api/visitors")
+     .success(function(name) {
+       $scope.chips = name;
+       console.log("Your name is: " + name);
+     })
+     .error(function(response, status) {
+       console.log("The request failed with response " + response + " and status code " + status);
+     });
+
+   //console.log($scope.chips);
    //$scope.chips = ['The','quick','brown','fox','jumped','over','the','lazy','dog'];
 });
 
