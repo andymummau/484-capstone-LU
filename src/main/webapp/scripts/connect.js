@@ -26,7 +26,8 @@
                     data.forEach(function(element, index) {
                       data[index] = AntiXSS.sanitizeInput(element)
                     });
-                    $('#databaseNames').html("Database contents: " + JSON.stringify(data));
+                    var test = JSON.stringify(data);
+                    $('#databaseNames').html(JSON.stringify(data));
                   }
               });
           }

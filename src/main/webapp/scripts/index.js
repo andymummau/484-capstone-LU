@@ -1,7 +1,7 @@
 angular
     .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons'])
 
-.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog) {
+.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http) {
     $scope.toggleLeft = buildToggler('left');
     $scope.onSwipeRight = buildToggler('left');
     $scope.onSwipeLeft = buildToggler('left');
@@ -58,7 +58,9 @@ angular
     $mdDialog.hide(answer);
   };
     }
-   $scope.chips = ['The','quick','brown','fox','jumped','over','the','lazy','dog'];
+   $scope.chips = $http.get('api/visitors');
+   console.log($scope.chips);
+   //$scope.chips = ['The','quick','brown','fox','jumped','over','the','lazy','dog'];
 });
 
 /*angular
