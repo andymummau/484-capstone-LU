@@ -19,9 +19,6 @@
 <md-content>
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-button>
         <h2 flex="" md-truncate="">Speech to ASL Translator Pro Ultimate</h2>
       </div>
     </md-toolbar>
@@ -33,7 +30,6 @@
             <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
             <span class="md-subhead"></span>
               <md-chips ng-model="chips"></md-chips>
-              <p>{{chips}}</p>
           </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
@@ -45,7 +41,7 @@
 </md-content>
       <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
         <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
-        <ng-md-icon id="mic_icon" icon="mic"></ng-md-icon>
+         <md-icon id="mic_icon" md-svg-src="ic_mic_white_48px.svg"></md-icon>
       </md-button>
 </div>
 
