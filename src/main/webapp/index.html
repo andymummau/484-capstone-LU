@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>Basic Usage</title>
+  <meta charset="UTF-8">
+  <title>Basic Usage</title>
     <meta name="viewport" content="width=device-width">
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-    <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
-    <link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
-    <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  
+  <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+<link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
 
 <body>
-    <div ng-controller="AppCtrl" layout="column" ng-cloak="" class="toolbardemoBasicUsage" ng-app="MyApp">
-        
-    <md-content>
-        <md-toolbar class="md-hue-2">
-            <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-                    <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-                </md-button>
-                <h2 flex="" md-truncate="">Speech to ASL Translator</h2>
-            </div>
-        </md-toolbar>
-    </md-content>
-        
-    <md-content class="md-padding" layout-xs="column" layout="row">
-        <md-card layout-align="center" flex-gt-sm="100" flex-gt-md="100">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
-                    <span class="md-subhead"></span>
-                    <md-chips ng-model="chips"></md-chips>
-                    <p>{{chips}}</p>
-                </md-card-title-text>
-            </md-card-title>
-            
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>Clear Text</md-button>
-                <md-button class="md-raised md-primary" ng-click="viewTranslation($event)">Translate</md-button>
-            </md-card-actions>
-      </md-card>   
-    </md-content>
-        
-    <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
+<div ng-controller="AppCtrl" layout="column" ng-cloak="" class="toolbardemoBasicUsage" ng-app="MyApp">
+<md-content>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <h2 flex="" md-truncate="">Speech to ASL Translator Pro Ultimate</h2>
+      </div>
+    </md-toolbar>
+  </md-content>
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <md-card layout-align="center" flex-gt-sm="100" flex-gt-md="100">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
+            <span class="md-subhead"></span>
+              <md-chips ng-model="chips"></md-chips>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Clear Text</md-button>
+          <md-button class="md-raised md-primary" ng-click="viewTranslation($event)">Translate</md-button>
+        </md-card-actions>
+      </md-card>
+    
+</md-content>
+      <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
         <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
-        <ng-md-icon id="mic_icon" icon="mic"></ng-md-icon>
-    </md-button>
-        
-    </div>
+         <md-icon id="mic_icon" md-svg-src="ic_mic_white_48px.svg"></md-icon>
+      </md-button>
+</div>
 
-    <!--
-    Copyright 2016 Google Inc. All Rights Reserved. 
-    Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
-    -->
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
-    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
-    <script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>
-    <script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script  src="scripts/index.js"></script>
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>
+<script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script  src="scripts/index.js"></script>
 
 </body>
 </html>
