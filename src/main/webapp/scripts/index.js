@@ -3,8 +3,6 @@ angular
 
 .controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http) {
     $scope.toggleLeft = buildToggler('left');
-    $scope.onSwipeRight = buildToggler('left');
-    $scope.onSwipeLeft = buildToggler('left');
     
     function buildToggler(componentId){
         return function(){
@@ -60,17 +58,17 @@ angular
     }
    //$scope.chips = $http.get('api/visitors');
 
-   $http.get("api/visitors")
+   /*$http.get("api/visitors")
      .success(function(name) {
        $scope.chips = name;
        console.log("Your name is: " + name);
      })
      .error(function(response, status) {
        console.log("The request failed with response " + response + " and status code " + status);
-     });
+     });*/
 
    //console.log($scope.chips);
-   //$scope.chips = ["Katie","Pedrocarmel","Noah","Wow","IBM","David","Andycarmel","Drew","Jessicacarmel","Jerry","Andy"];
+   $scope.chips = ["The","quick","blue","fox","jumps","over","the","lazy","dog"];
 });
 
 /*angular

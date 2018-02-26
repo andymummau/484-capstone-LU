@@ -26,31 +26,8 @@
       </div>
     </md-toolbar>
   </md-content>
-  <md-content class="main" ng-controller="AppCtrl" md-swipe-right="onSwipeRight()">
-      
-  </md-content>
-<section  layout="column" flex md-swipe-left="onSwipeLeft()">
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Options</h1>
-        </md-toolbar>
-    <md-list>
-      <md-item ng-repeat="item in menu">
-          <md-item-content md-ink-ripple layout="row" layout-align="start center">
-            <md-button class="" aira-label="{{item.title}}" ng-click="selectLanguage($event)">
-                <md-icon icon="{{item.icon}}"></md-icon>{{item.title}}
-            </md-button>
-          </md-item-content>
-      </md-item>
-      <md-divider></md-divider>
-    </md-list>
-        <md-content layout-margin>
-            <p></p>
-        </md-content>
-    </md-sidenav>
-</section>
 <md-content class="md-padding" layout-xs="column" layout="row">
-    <md-card layout-align="center" flex-gt-sm="100" flex-gt-md="80">
+    <md-card layout-align="center" flex-gt-sm="100" flex-gt-md="100">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
@@ -59,34 +36,11 @@
               <p>{{chips}}</p>
           </md-card-title-text>
         </md-card-title>
-        <md-content layout="row" layout-align="end center">
-            <md-button ng-repeat="x in chips">{{x}}</md-button>
-        </md-content>    
         <md-card-actions layout="row" layout-align="end center">
           <md-button>Clear Text</md-button>
           <md-button class="md-raised md-primary" ng-click="viewTranslation($event)">Translate</md-button>
         </md-card-actions>
       </md-card>
-    <!--<md-card flex-gt-sm="90" flex-gt-md="80">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline" style="align: center;">Press and hold the mic to capture audio</span>
-            <span class="md-subhead">Large</span>
-              <md-chips ng-model="chips" md-enable-chip-edit="true">
-              </md-chips>
-            <md-input-container style="margin-right: 10px;">
-        <label>Size</label>
-        <md-select ng-model="size">
-          <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
-        </md-select>
-      </md-input-container>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Clear Text</md-button>
-          <md-button class="md-raised md-primary">New Translation</md-button>
-        </md-card-actions>
-      </md-card>-->
 </md-content>
       <md-button class="md-fab md-fab-bottom-right" aria-label="Activate Mic">
         <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
