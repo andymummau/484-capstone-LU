@@ -1,6 +1,20 @@
 angular
     .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons'])
 
+.config(function($mdThemingProvider) {
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo', {
+      'default': '800',
+      'hue-1': '500', 
+      'hue-2': '800',
+      'hue-3': 'A200'
+    })
+    .accentPalette('red', {
+      'default': '800'
+    });
+})
+
 .controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http) {
     $scope.toggleLeft = buildToggler('left');
     
