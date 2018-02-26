@@ -17,6 +17,18 @@ md-toolbar:not(.md-hue-1),
 .md-fab {
   fill: #fff;
 }
+
+#micbut {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 47%;
+    margin-right: 53%;
+}
+
+#mic_icon {
+    padding-top: -43px;
+}
+
 /*
 Copyright 2016 Google Inc. All Rights Reserved. 
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
