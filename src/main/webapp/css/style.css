@@ -21,12 +21,19 @@ md-toolbar:not(.md-hue-1),
 #micbut {
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 47%;
-    margin-right: 53%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vh;
+    height: 20vh;
 }
 
 #mic_icon {
-    padding-top: -43px;
+    height: 90px;
+    width: 90px;
+}
+
+md-colors {
+    Primary - blue-grey;
 }
 
 /*
