@@ -4,14 +4,14 @@ angular
 .config(function($mdThemingProvider) {
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('indigo', {
+    .primaryPalette('blue', {
       'default': '800',
       'hue-1': '500', 
       'hue-2': '800',
       'hue-3': 'A200'
     })
-    .accentPalette('red', {
-      'default': '800'
+    .accentPalette('light-blue', {
+      'default': 'A200'
     });
 })
 
