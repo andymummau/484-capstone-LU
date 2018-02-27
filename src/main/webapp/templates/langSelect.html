@@ -1,10 +1,11 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog>
     <md-content class="md-padding">
-        <p>Select a Language</p>
+        <p id="select">Select a Language</p><p id="select2">Selecciona un idioma</p>
     </md-content>
-    <div class="md-actions" layout="row">
-        <span flex></span>
-        <md-button ng-click="close()"> Spanish </md-button>
+
+    <span flex></span>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button ng-click="close()" > Español </md-button>
         <md-button ng-click="close()" class="md-primary"> English </md-button>
-    </div>
+    </section>
 </md-dialog>
