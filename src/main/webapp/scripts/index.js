@@ -71,6 +71,10 @@ function DialogController($scope, $mdDialog) {
 $scope.printSentence = function() {
     $scope.chips = ["The","quick","blue","fox","jumps","over","the","lazy","dog"];
 }
+//Temporarily clear code for demonstration
+$scope.clearSentence = function() {
+    $scope.chips = [];
+}
    //$scope.chips = $http.get('api/visitors');
 
    /*$http.get("api/visitors")
