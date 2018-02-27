@@ -9,14 +9,12 @@
     <link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 <div ng-controller="AppCtrl" layout="column" ng-cloak="" class="toolbardemoBasicUsage" ng-app="MyApp">
 <md-content>
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
         <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translate</h2>
-        <h2 flex="" md-truncate="">Speech to ASL Translator Pro Ultimate</h2>
         <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
             <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">Select Language</md-tooltip>
             <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
@@ -47,8 +45,6 @@
       <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
         <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
         <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
-          <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
-          <md-icon id="mic_icon" md-svg-src="ic_mic_white_48px.svg"></md-icon>
       </md-button>
     <p layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
 </div>
