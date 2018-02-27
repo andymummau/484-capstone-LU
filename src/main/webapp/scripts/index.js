@@ -42,6 +42,19 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
+$scope.upload = function(ev) {
+    $mdDialog.show({
+        controller: DialogController,
+        templateUrl: "../templates/upload.html",
+        targetEvent: ev,
+        scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
+    })
+    /*.then(function(answer) {
+      $scope.alert = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.alert = 'You cancelled the dialog.';
+    });*/
+};
 function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
         $mdDialog.hide();
