@@ -35,6 +35,13 @@
         </md-card-title>
         <md-card-content>
             <md-chips md-enable-chip-edit ng-model="chips"></md-chips>
+            <br />
+            <br />
+            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" >
+                <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
+                <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
+            </md-button>
+            <p layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button>Clear Text</md-button>
@@ -42,11 +49,6 @@
         </md-card-actions>
       </md-card>
 </md-content>
-      <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
-        <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
-        <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
-      </md-button>
-    <p layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
 </div>
 <!--
 Copyright 2016 Google Inc. All Rights Reserved. 

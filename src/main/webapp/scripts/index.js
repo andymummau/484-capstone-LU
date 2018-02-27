@@ -38,7 +38,7 @@ angular
     $scope.selectLanguage = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      template: '<md-dialog aria-label="Mango (Fruit)"><md-content class="md-padding">Select a Language</md-content><div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> English </md-button> <md-button ng-click="answer(\'useful\')" class="md-primary"> Spanish </md-button> </div></md-dialog>',
+      templateUrl: "../templates/langSelect.html",
       targetEvent: ev,
     })
     /*.then(function(answer) {
@@ -50,7 +50,7 @@ angular
     $scope.viewTranslation = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      template: '<md-dialog aria-label="Mango (Fruit)"><md-content class="md-padding"><md-toolbar class="md-theme-indigo"><h1 class="md-toolbar-tools">Translation</h1></md-toolbar><img src="https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif" style="display:block; width:100%; height:auto;"/><h3 style="text-align:center">dog</h3></md-content><div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> New Translation </md-button> <md-button ng-click="answer(\'useful\')" class="md-raised md-primary"> Close </md-button> </div></md-dialog>',
+      templateUrl: "../templates/translationSlider.html",
       targetEvent: ev,
     })
     /*.then(function(answer) {
