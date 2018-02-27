@@ -1,21 +1,6 @@
-.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
-  color: blue; }
-
 .main {
     height: 100%;
     width: 10vh;
-}
-
-md-sidenav {
-  fill: #737373;
-  ng-md-icon {
-    position: relative;
-    top: 5px; // adjust for svg viewbox
-  }
-}
-md-toolbar:not(.md-hue-1),
-.md-fab {
-  fill: #fff;
 }
 
 #micbut {
