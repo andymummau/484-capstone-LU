@@ -35,6 +35,7 @@ $scope.viewTranslation = function(ev) {
         controller: DialogController,
         templateUrl: "../templates/translationSlider.html",
         targetEvent: ev,
+        scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
     })
     /*.then(function(answer) {
       $scope.alert = 'You said the information was "' + answer + '".';
