@@ -75,6 +75,15 @@ $scope.printSentence = function() {
 $scope.clearSentence = function() {
     $scope.chips = [];
 }
+
+//Enables translate button
+$scope.enableTrans = function() {
+   document.getElementById("transButton").removeAttribute("disabled");
+}
+
+$scope.disableTrans = function() {
+   document.getElementById("transButton").setAttribute("disabled", "disabled");
+}
    //$scope.chips = $http.get('api/visitors');
 
    /*$http.get("api/visitors")
