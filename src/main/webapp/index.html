@@ -35,15 +35,15 @@
             <md-chips md-enable-chip-edit ng-model="chips"></md-chips>
             <br />
             <br />
-            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence()">
+            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); enableTrans()">
                 <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
                 <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
             </md-button>
             <p class="md-headline" layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="clearSentence()">Clear Text</md-button>
-          <md-button class="md-raised md-primary" ng-click="viewTranslation($event)">Translate</md-button>
+          <md-button ng-click="clearSentence(); disableTrans()">Clear Text</md-button>
+          <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event)">Translate</md-button>
         </md-card-actions>
       </md-card>
 </md-content>
