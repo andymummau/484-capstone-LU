@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>Basic Usage</title>
+    <meta charset="UTF-8">
+    <title>Basic Usage</title>
     <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-  
-  <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
-<link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
-
-      <link rel="stylesheet" href="css/style.css">
-
-  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+    <link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -20,6 +16,14 @@
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
         <h2 flex="" md-truncate="">Speech to ASL Translator Pro Ultimate</h2>
+        <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
+            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">Select Language</md-tooltip>
+            <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini" aria-label="Upload">
+            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">Upload</md-tooltip>
+            <md-icon md-svg-src="images/ic_file_upload_white_48px.svg"></md-icon>
+        </md-button>
       </div>
     </md-toolbar>
   </md-content>
@@ -41,8 +45,9 @@
 </md-content>
       <md-button id="micbut" class="md-fab" aria-label="Activate Mic" >
         <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
-         <md-icon id="mic_icon" md-svg-src="ic_mic_white_48px.svg"></md-icon>
+        <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
       </md-button>
+    <p layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
 </div>
 
 <!--
