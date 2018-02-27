@@ -4,23 +4,20 @@
             <h1 class="md-toolbar-tools">Translation</h1>
         </md-toolbar>
         
-        <div ng-controller="MainCtrl" class="container slider">
-    <img ng-repeat="slide in slides" class="slide slide-animation"
-         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-            
-                <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-            
-            <nav class="nav">
-                <div class="wrapper">
-                <ul class="dots">
-                <li class="dot" ng-repeat="slide in slides">
-                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                    ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-                </ul></div>
-            </nav>
-            
-        </div>
+  <wallop-slider
+        data-images="images"
+        data-animation="rotate"
+        data-current-item-index="index"
+        data-on-previous="updateTsPrevious()"
+        data-on-next="updateTsNext()"
+        
+        ></wallop-slider>
+  
+  <p>Current index: {{index}}</p>
+  
+  <p>On previous, update this timestamp {{tsPrevious}}</p>
+  <p>On next, update this timestamp {{tsNext}}</p>
+      
         <!--<img src="https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif" style="display:block; width:100%; height:auto;"/>
         <h3 style="text-align:center">dog</h3>-->
         
