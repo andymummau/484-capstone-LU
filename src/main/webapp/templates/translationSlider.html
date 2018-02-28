@@ -4,23 +4,20 @@
             <h1 class="md-toolbar-tools">Translation</h1>
         </md-toolbar>
         
-  <wallop-slider
-        data-images="images"
-        data-animation="rotate"
-        data-current-item-index="index"
-        data-on-previous="updateTsPrevious()"
-        data-on-next="updateTsNext()"
-        
-        ></wallop-slider>
+        <wallop-slider
+            data-images="images"
+            data-animation="rotate"
+            data-current-item-index="index"
+            data-on-previous="updateTsPrevious()"
+            data-on-next="updateTsNext()">
+        </wallop-slider>
+        <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
   
-  <p>Current index: {{index}}</p>
-  
-  <p>On previous, update this timestamp {{tsPrevious}}</p>
-  <p>On next, update this timestamp {{tsNext}}</p>
+        <p>Current index: {{index}}</p>
       
         <!--<img src="https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif" style="display:block; width:100%; height:auto;"/>
         <h3 style="text-align:center">dog</h3>-->
-        
     </md-content>
 
     <div class="md-actions" layout="row">

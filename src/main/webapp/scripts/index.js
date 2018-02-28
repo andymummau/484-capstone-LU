@@ -103,7 +103,9 @@ $scope.disableTrans = function() {
   $scope.images = [
     'https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif',
     'https://media.giphy.com/media/3o6Zt75NDGTAIeydck/giphy.gif',
-    'https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif'
+    'https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif',
+    'https://media.giphy.com/media/l0MYtTptyL8h88UHm/giphy.gif',
+    'https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif'
   ];
   
   // callbacks for change in slides
