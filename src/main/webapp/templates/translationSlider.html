@@ -3,27 +3,19 @@
         <md-toolbar class="md-theme-indigo">
             <h1 class="md-toolbar-tools">Translation</h1>
         </md-toolbar>
-        
-        <wallop-slider
-            data-images="images"
-            data-animation="rotate"
-            data-current-item-index="index"
-            data-on-previous="updateTsPrevious()"
-            data-on-next="updateTsNext()">
-        </wallop-slider>
-        
-        <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-        <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-  
-        <p>Current index: {{index}}</p>
-      
-        <!--<img src="https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif" style="display:block; width:100%; height:auto;"/>
-        <h3 style="text-align:center">dog</h3>-->
-    </md-content>
+    <div class="w3-content w3-display-container">
+  <img class="mySlides" src="https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif" style="width:100%">
+  <img class="mySlides" src="https://media.giphy.com/media/3o6Zt75NDGTAIeydck/giphy.gif" style="width:100%">
+  <img class="mySlides" src="https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif" style="width:100%">
+  <img class="mySlides" src="https://media.giphy.com/media/l0MYtTptyL8h88UHm/giphy.gif" style="width:100%">
 
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+    </md-content>
     <div class="md-actions" layout="row">
-        <span flex></span>
         <md-button ng-click="close(clearSentence()); disableTrans()"> New Translation </md-button>
         <md-button ng-click="close()" class="md-raised md-primary"> Close </md-button>
     </div>
+    
 </md-dialog>
