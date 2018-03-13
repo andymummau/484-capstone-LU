@@ -33,7 +33,7 @@ $scope.selectLanguage = function(ev) {
 $scope.viewTranslation = function(ev) {
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: "../templates/translationSlider.html",
+        templateUrl: "templates/translationSlider.html",
         targetEvent: ev,
         scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
     })
