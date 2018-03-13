@@ -70,17 +70,21 @@ function DialogController($scope, $mdDialog) {
 //Temporay code to demonstrate proof-of-concept    
 $scope.printSentence = function() {
     $scope.chips = ["The","quick","brown","fox","jumps","over","the","lazy","dog"];
+    //Enable clear button after sentence is output
+    document.getElementById("clearButton").removeAttribute("disabled");
 }
 //Temporarily clear code for demonstration
 $scope.clearSentence = function() {
     $scope.chips = [];
+    //Disable clear button after using
+    document.getElementById("clearButton").setAttribute("disabled", "disabled");
 }
 
 //Enables translate button
 $scope.enableTrans = function() {
    document.getElementById("transButton").removeAttribute("disabled");
 }
-
+//Disables Translate button
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
