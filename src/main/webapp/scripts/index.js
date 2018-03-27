@@ -43,6 +43,42 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
+
+$scope.englishInterface = function() {
+
+        $scope.mHold = "Tap and Hold to Capture Audio";
+        $scope.mClear = "CLEAR TEXT";
+        $scope.mTranslate = "TRANSLATE";
+        $scope.mTransHeader = "Translation";
+        $scope.mUploadMsg = "Upload your Contribution";
+        $scope.mUpload = "Upload";
+        $scope.mUploadFill = "Word for Upload";
+        $scope.mCancel = "CANCEL";
+        $scope.mChoose = "CHOOSE PHOTO";
+        $scope.mLanguage = "Select Language";
+        $scope.mActivate = "Activate Mic";
+        $scope.mClose = "Close";
+        $scope.mNewTran = "New Translation";
+};
+
+$scope.spanishInterface = function() {
+
+        $scope.mHold = "Toque y Mantenga Presionado Para Capturar Audio";
+        $scope.mClear = "BORRAR TEXTO";
+        $scope.mTranslate = "TRADUCIR";
+        $scope.mTransHeader = "Traducción";
+        $scope.mUploadMsg = "Cargue Su Contribución";
+        $scope.mUpload = "Subir";
+        $scope.mUploadFill = "Palabra Para Subir";
+        $scope.mCancel = "CANCELAR";
+        $scope.mChoose = "ESCOGE UNA FOTO";
+        $scope.mLanguage = "Seleccione el Idioma";
+        $scope.mActivate = "Activar Micrófono";
+        $scope.mClose = "Cerca";
+        $scope.mNewTran = "Nueva Traducción";
+};
+
+
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -67,7 +103,7 @@ function DialogController($scope, $mdDialog) {
         $mdDialog.hide(answer);
     };
 };
-//Get sentence from WATSON API and store to a variable    
+//Get sentence from WATSON API and store to a variable
 $scope.printSentence = function() {
 try {
     var xhr = new XMLHttpRequest();
@@ -88,7 +124,7 @@ try {
                 $scope.$apply(function() {
                     $scope.chips = data.results[0].alternatives[0].transcript;
                 });
-                console.log("Transcript: " + $scope.chips); 
+                console.log("Transcript: " + $scope.chips);
             });
             //Tell Watson to wrap up speech capture and create final transcript
             $scope.stopCapture = function() {
@@ -122,7 +158,7 @@ $scope.clearSentence = function() {
 $scope.enableTrans = function() {
    document.getElementById("transButton").removeAttribute("disabled");
 }
-//Disables Translate button
+
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
@@ -138,4 +174,4 @@ $scope.disableTrans = function() {
      });*/
 
    //console.log($scope.chips);
-})  
+})

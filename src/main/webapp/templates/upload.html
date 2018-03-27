@@ -1,15 +1,15 @@
 <md-dialog>
     <md-content class="md-padding" layout="column" layout-align="center center">
-        <p>Upload your Contribution</p>
+        <p>{{mUploadMsg}}</p>
         <input class="ng-hide" id="input-file-id" multiple type="file" />
-        <label for="input-file-id" class="md-button md-raised md-primary">Choose Photo</label>
+        <label for="input-file-id" class="md-button md-raised md-primary">{{mChoose}}</label>
         <md-input-container class="md-inline-block">
-            <label>Word for Photo</label>
-            <input ng-model="word">
+            <label>{{mUploadFill}}</label>
+            <input ng-model="">
         </md-input-container>
     </md-content>
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button ng-click="close()"> Cancel </md-button>
-        <md-button ng-click="close()" class="md-primary"> Upload </md-button>
+        <md-button ng-click="close()">{{mCancel}} </md-button>
+        <md-button ng-click="close()" class="md-primary"> {{mUpload}} </md-button>
     </section>
 </md-dialog>

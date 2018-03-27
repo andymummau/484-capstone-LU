@@ -17,11 +17,11 @@
       <div class="md-toolbar-tools">
         <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translator</h2>
         <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
-            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">Select Language</md-tooltip>
+            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">{{mLanguage}}</md-tooltip>
             <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
         </md-button>
         <md-button class="md-fab md-mini" aria-label="Upload" ng-click="upload($event)">
-            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">Upload</md-tooltip>
+            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">{{mEupload}}</md-tooltip>
             <md-icon md-svg-src="images/ic_file_upload_white_48px.svg"></md-icon>
         </md-button>
       </div>
@@ -34,14 +34,14 @@
                <p id="diyChip">{{chips}}</p>
             </md-content>
             <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-mousedown="printSentence()" ng-mouseup="stopCapture()">
-                <md-tooltip md-direction="top" md-visible="false" md-autohide="false">Activate Mic</md-tooltip>
+                <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
                 <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
             </md-button>
-            <p class="md-headline" layout="column" layout-align="center center">Tap and Hold to Capture Audio</p>
+            <p class="md-headline" layout="column" layout-align="center center">{{mHold}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button id="clearButton" ng-disabled="true" ng-click="clearSentence(); disableTrans()">Clear Text</md-button>
-          <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event)">Translate</md-button>
+          <md-button ng-click="clearSentence(); disableTrans()">{{mClear}}</md-button>
+          <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event)">{{mTranslate}}</md-button>
         </md-card-actions>
       </md-card>
 </md-content>
@@ -55,7 +55,7 @@ Use of this source code is governed by an MIT-style license that can be foundin 
     <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
-    
+
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
