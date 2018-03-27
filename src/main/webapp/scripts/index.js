@@ -43,6 +43,42 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
+    
+$scope.englishInterface = function() {
+
+        $scope.mHold = "Tap and Hold to Capture Audio";
+        $scope.mClear = "CLEAR TEXT";
+        $scope.mTranslate = "TRANSLATE";
+        $scope.mTransHeader = "Translation";
+        $scope.mUploadMsg = "Upload your Contribution";
+        $scope.mUpload = "Upload";
+        $scope.mUploadFill = "Word for Upload";
+        $scope.mCancel = "CANCEL";
+        $scope.mChoose = "CHOOSE PHOTO";
+        $scope.mLanguage = "Select Language";
+        $scope.mActivate = "Activate Mic";
+        $scope.mClose = "Close";
+        $scope.mNewTran = "New Translation";
+};
+    
+$scope.spanishInterface = function() {
+
+        $scope.mHold = "Toque y Mantenga Presionado Para Capturar Audio";
+        $scope.mClear = "BORRAR TEXTO";
+        $scope.mTranslate = "TRADUCIR";
+        $scope.mTransHeader = "Traducción";
+        $scope.mUploadMsg = "Cargue Su Contribución";
+        $scope.mUpload = "Subir";
+        $scope.mUploadFill = "Palabra Para Subir";
+        $scope.mCancel = "CANCELAR";
+        $scope.mChoose = "ESCOGE UNA FOTO";
+        $scope.mLanguage = "Seleccione el Idioma";
+        $scope.mActivate = "Activar Micrófono";
+        $scope.mClose = "Cerca";
+        $scope.mNewTran = "Nueva Traducción";
+};
+
+
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -70,21 +106,17 @@ function DialogController($scope, $mdDialog) {
 //Temporay code to demonstrate proof-of-concept    
 $scope.printSentence = function() {
     $scope.chips = ["The","quick","brown","fox","jumps","over","the","lazy","dog"];
-    //Enable clear button after sentence is output
-    document.getElementById("clearButton").removeAttribute("disabled");
 }
 //Temporarily clear code for demonstration
 $scope.clearSentence = function() {
     $scope.chips = [];
-    //Disable clear button after using
-    document.getElementById("clearButton").setAttribute("disabled", "disabled");
 }
 
 //Enables translate button
 $scope.enableTrans = function() {
    document.getElementById("transButton").removeAttribute("disabled");
 }
-//Disables Translate button
+
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
