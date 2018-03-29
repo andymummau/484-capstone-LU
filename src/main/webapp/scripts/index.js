@@ -1,5 +1,5 @@
 angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate'])
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui'])
 
 //Color Theming config
 .config(function($mdThemingProvider) {
@@ -43,42 +43,6 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
-    
-$scope.englishInterface = function() {
-
-        $scope.mHold = "Tap and Hold to Capture Audio";
-        $scope.mClear = "CLEAR TEXT";
-        $scope.mTranslate = "TRANSLATE";
-        $scope.mTransHeader = "Translation";
-        $scope.mUploadMsg = "Upload your Contribution";
-        $scope.mUpload = "Upload";
-        $scope.mUploadFill = "Word for Upload";
-        $scope.mCancel = "CANCEL";
-        $scope.mChoose = "CHOOSE PHOTO";
-        $scope.mLanguage = "Select Language";
-        $scope.mActivate = "Activate Mic";
-        $scope.mClose = "Close";
-        $scope.mNewTran = "New Translation";
-};
-    
-$scope.spanishInterface = function() {
-
-        $scope.mHold = "Toque y Mantenga Presionado Para Capturar Audio";
-        $scope.mClear = "BORRAR TEXTO";
-        $scope.mTranslate = "TRADUCIR";
-        $scope.mTransHeader = "Traducción";
-        $scope.mUploadMsg = "Cargue Su Contribución";
-        $scope.mUpload = "Subir";
-        $scope.mUploadFill = "Palabra Para Subir";
-        $scope.mCancel = "CANCELAR";
-        $scope.mChoose = "ESCOGE UNA FOTO";
-        $scope.mLanguage = "Seleccione el Idioma";
-        $scope.mActivate = "Activar Micrófono";
-        $scope.mClose = "Cerca";
-        $scope.mNewTran = "Nueva Traducción";
-};
-
-
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -103,20 +67,62 @@ function DialogController($scope, $mdDialog) {
         $mdDialog.hide(answer);
     };
 };
-//Temporay code to demonstrate proof-of-concept    
+//Get sentence from WATSON API and store to a variable    
 $scope.printSentence = function() {
-    $scope.chips = ["The","quick","brown","fox","jumps","over","the","lazy","dog"];
+try {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(null);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            // Got the token back from the Proxy
+            var token = xhr.responseText;
+            console.log("---------WATSON TOKEN Loaded--------");
+            var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+                token: token,
+                objectMode: true
+            });
+            //Capture raw JSON data from API
+            stream.on('data', function(data) {
+                $scope.$apply(function() {
+                    $scope.chips = data.results[0].alternatives[0].transcript;
+                });
+                console.log("Transcript: " + $scope.chips); 
+            });
+            //Tell Watson to wrap up speech capture and create final transcript
+            $scope.stopCapture = function() {
+                stream.stop();
+                console.log("-------Stoping Stream...--------");
+                //Enable "Translate" button
+                document.getElementById("transButton").removeAttribute("disabled");
+            };
+            //Error handling
+            stream.on('error', function(err) {
+                console.log(err);
+            });
+        }
+    }
 }
+//Error handling
+catch(error) {
+    console.log(error);
+}
+//Enable clear button after sentence is output
+document.getElementById("clearButton").removeAttribute("disabled");
+};
 //Temporarily clear code for demonstration
 $scope.clearSentence = function() {
     $scope.chips = [];
+    //Disable clear button after using
+    document.getElementById("clearButton").setAttribute("disabled", "disabled");
 }
 
 //Enables translate button
 $scope.enableTrans = function() {
    document.getElementById("transButton").removeAttribute("disabled");
 }
-
+//Disables Translate button
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
@@ -132,4 +138,4 @@ $scope.disableTrans = function() {
      });*/
 
    //console.log($scope.chips);
-})
+})  

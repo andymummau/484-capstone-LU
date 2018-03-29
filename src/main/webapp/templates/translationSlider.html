@@ -1,7 +1,8 @@
 <md-dialog>
     <md-content class="md-padding">
+        <md-card-title>{{chips}}</md-card-title>
         <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
+            <h1 class="md-toolbar-tools">Translation</h1>
         </md-toolbar>
     <div class="w3-content w3-display-container">
   <img class="mySlides" src="https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif" style="width:100%">
@@ -15,8 +16,8 @@
 </div>
     </md-content>
     <div class="md-actions" layout="row">
-        <md-button ng-click="close(clearSentence()); disableTrans()"> {{mNewTran}} </md-button>
-        <md-button ng-click="close()" class="md-raised md-primary"> {{mClose}} </md-button>
+        <md-button ng-click="close(clearSentence()); disableTrans()"> New Translation </md-button>
+        <md-button ng-click="close()" class="md-raised md-primary"> Close </md-button>
     </div>
     
 </md-dialog>
