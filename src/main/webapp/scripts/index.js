@@ -1,5 +1,5 @@
 angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui'])
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'jkAngularCarousel'])
 
 //Color Theming config
 .config(function($mdThemingProvider) {
@@ -43,7 +43,7 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
-$scope.dataArray = [
+    $scope.dataArray = [
       {
         src: 'https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif'
       },
@@ -60,7 +60,6 @@ $scope.dataArray = [
         src: 'https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif'
       }
     ];
-
 $scope.englishInterface = function() {
 
         $scope.mHold = "Tap and Hold to Capture Audio";
