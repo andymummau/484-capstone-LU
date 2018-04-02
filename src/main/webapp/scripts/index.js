@@ -1,5 +1,5 @@
 angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate'])
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'jkAngularCarousel'])
 
 //Color Theming config
 .config(function($mdThemingProvider) {
@@ -43,6 +43,23 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
+$scope.dataArray = [
+      {
+        src: 'https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif'
+      },
+      {
+        src: 'https://media.giphy.com/media/3o6Zt75NDGTAIeydck/giphy.gif'
+      },
+      {
+        src: 'https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif'
+      },
+      {
+        src: 'https://media.giphy.com/media/l0MYtTptyL8h88UHm/giphy.gif'
+      },
+      {
+        src: 'https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif'
+      }
+    ];
     
 $scope.englishInterface = function() {
 
