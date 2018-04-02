@@ -16,7 +16,7 @@
 <md-content>
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
-        <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translate</h2>
+        <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translator</h2>
         <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
             <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">{{mLanguage}}</md-tooltip>
             <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
@@ -30,14 +30,11 @@
   </md-content>
 <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center centers">
     <md-card flex-gt-sm="100" flex-gt-md="70">
-        <md-card-title layout-align="center center">
-          <md-card-title-text></md-card-title-text>
-        </md-card-title>
         <md-card-content layout-align="center center">
-            <md-chips md-enable-chip-edit ng-model="chips"></md-chips>
-            <br />
-            <br />
-            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); enableTrans()">
+            <md-content>
+               <p id="diyChip">{{chips}}</p>
+            </md-content>
+            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-mousedown="printSentence()" ng-mouseup="stopCapture()">
                 <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
                 <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
             </md-button>
@@ -54,8 +51,12 @@
 Copyright 2016 Google Inc. All Rights Reserved. 
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
 -->
-    <script src='https://rawgit.com/peduarte/wallop/master/js/Wallop.js'></script>
+    <script src="scripts/watson-speech.js"></script>
+    <!---<script src="scripts/watson-connector.js"></script>--->
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
@@ -63,6 +64,9 @@ Use of this source code is governed by an MIT-style license that can be foundin 
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
     <script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>
     <script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+
+
     <script src="scripts/jk-carousel.min.js"></script>
 
     <script  src="scripts/index.js"></script>
