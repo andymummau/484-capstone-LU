@@ -7,26 +7,16 @@
         <md-card id="transSlider" layout="column" layout-align="center center" style="padding-bottom: 10px" >
         <jk-carousel
             data="dataArray"
-            item-template-url="'../item-template.html'"
+            item-template-url="'item-template.html'"
             max-width="900" 
             max-height="500"
             auto-slide="true"
             auto-slide-time="5000">
         </jk-carousel>
         </md-card>
-    <!--<div class="w3-content w3-display-container">
-  <img class="mySlides" src="https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif" style="width:100%">
-  <img class="mySlides" src="https://media.giphy.com/media/3o6Zt75NDGTAIeydck/giphy.gif" style="width:100%; display:none;">
-  <img class="mySlides" src="https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif" style="width:100%; display:none;">
-  <img class="mySlides" src="https://media.giphy.com/media/l0MYtTptyL8h88UHm/giphy.gif" style="width:100%; display:none;">
-    <img class="mySlides" src="https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif" style="width:100%; display:none;">
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>-->
     </md-content>
     <div class="md-actions" layout="row">
         <md-button ng-click="close(clearSentence()); disableTrans()"> {{mNewTran}} </md-button>
         <md-button ng-click="close()" class="md-raised md-primary"> {{mClose}} </md-button>
     </div>
-    <script src="scripts/slider.js"></script>
 </md-dialog>

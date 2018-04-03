@@ -23,6 +23,8 @@ public class Visitor {
 	private String _id;
 	private String _rev;
 	private String name = null;
+	private String word = null;
+	private String url = null;
 
 	public Visitor() {
 		this.name = "";
@@ -75,14 +77,21 @@ public class Visitor {
 		return name;
 	}
 
-	/**
-	 * Sets the name
-	 * 
-	 * @param name
-	 *            The visitorName to set.
-	 */
+
+
+	//Get word from database
+	public String getWord() {return word;}
+	//Set word
+	public void setWord (String word) {
+		this.word = word;
+	}
+	public String getUrl() {return url;}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public void setName(String visitorName) {
-		this.name = visitorName + "chocolate";
+		this.name = visitorName;
 	}
 
 }

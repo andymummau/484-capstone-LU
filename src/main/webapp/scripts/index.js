@@ -20,7 +20,7 @@ angular
 $scope.selectLanguage = function(ev) {
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: "../templates/langSelect.html",
+        templateUrl: "templates/langSelect.html",
         targetEvent: ev,
         scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
     })
@@ -33,7 +33,7 @@ $scope.selectLanguage = function(ev) {
 $scope.viewTranslation = function(ev) {
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: "../templates/translationSlider.html",
+        templateUrl: "templates/translationSlider.html",
         targetEvent: ev,
         scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
     })
@@ -98,7 +98,7 @@ $scope.spanishInterface = function() {
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
-        templateUrl: "../templates/upload.html",
+        templateUrl: "templates/upload.html",
         targetEvent: ev,
         scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
     })
