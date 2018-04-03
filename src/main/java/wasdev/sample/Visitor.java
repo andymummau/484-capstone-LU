@@ -79,7 +79,7 @@ public class Visitor {
 
 
 
-	//Get word from database
+	/*//Get word from database
 	public String getWord() {return word;}
 	//Set word
 	public void setWord (String word) {
@@ -92,6 +92,6 @@ public class Visitor {
 	}
 	public void setName(String visitorName) {
 		this.name = visitorName;
-	}
+	}*/
 
 }
