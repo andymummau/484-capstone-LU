@@ -43,7 +43,12 @@ $scope.viewTranslation = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
-    $scope.dataArray = [
+$http.get('api/sliderContent')
+    .then(function(response) {
+        $scope.dataArray = response;
+        console.log = (response);
+    })
+/*    $scope.dataArray = [
       {
         src: 'https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif'
       },
@@ -59,7 +64,7 @@ $scope.viewTranslation = function(ev) {
       {
         src: 'https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif'
       }
-    ];
+    ];*/
 $scope.englishInterface = function() {
 
         $scope.mHold = "Tap and Hold to Capture Audio";
@@ -170,24 +175,7 @@ $scope.clearSentence = function() {
     document.getElementById("clearButton").setAttribute("disabled", "disabled");
 }
 
-//Enables translate button
-$scope.enableTrans = function() {
-   document.getElementById("transButton").removeAttribute("disabled");
-}
-
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
-   //$scope.chips = $http.get('api/visitors');
-
-   /*$http.get("api/visitors")
-     .success(function(name) {
-       $scope.chips = name;
-       console.log("Your name is: " + name);
-     })
-     .error(function(response, status) {
-       console.log("The request failed with response " + response + " and status code " + status);
-     });*/
-
-   //console.log($scope.chips);
 })
