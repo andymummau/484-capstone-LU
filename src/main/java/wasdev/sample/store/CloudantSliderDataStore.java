@@ -25,14 +25,15 @@ import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
 import com.google.gson.JsonObject;
 
-import wasdev.sample.Visitor;
+import javafx.scene.control.Slider;
+import wasdev.sample.SliderData;
 
-public class CloudantVisitorStore implements VisitorStore{
+public class CloudantSliderDataStore implements SliderDataStore{
 	
 	private Database db = null;
 	private static final String databaseName = "mydb";
 	
-	public CloudantVisitorStore(){
+	public CloudantSliderDataStore(){
 		CloudantClient cloudant = createClient();
 		if(cloudant!=null){
 		 db = cloudant.database(databaseName, true);
@@ -77,10 +78,10 @@ public class CloudantVisitorStore implements VisitorStore{
 	}
 	
 	@Override
-	public Collection<Visitor> getAll(){
-        List<Visitor> docs;
+	public Collection<SliderData> getAll(){
+        List<SliderData> docs;
 		try {
-			docs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse().getDocsAs(Visitor.class);
+			docs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse().getDocsAs(SliderData.class);
 		} catch (IOException e) {
 			return null;
 		}
@@ -88,29 +89,30 @@ public class CloudantVisitorStore implements VisitorStore{
 	}
 
 	@Override
-	public Visitor get(String id) {
-		return db.find(Visitor.class, id);
+	public SliderData get(String id) {
+		return db.find(SliderData.class, id);
 	}
 
 	@Override
-	public Visitor persist(Visitor td) {
+	public SliderData persist(SliderData td) {
 		String id = db.save(td).getId();
-		return db.find(Visitor.class, id);
+		return db.find(SliderData.class, id);
 	}
 
 	@Override
-	public Visitor update(String id, Visitor newVisitor) {
-		Visitor visitor = db.find(Visitor.class, id);
-		visitor.setName(newVisitor.getName());
-		db.update(visitor);
-		return db.find(Visitor.class, id);
+	public SliderData update(String id, SliderData newSliderData) {
+		SliderData sliderData = db.find(SliderData.class, id);
+		sliderData.setWord(newSliderData.getWord());
+		sliderData.setUrl(newSliderData.getUrl());
+		db.update(sliderData);
+		return db.find(SliderData.class, id);
 		
 	}
 
 	@Override
 	public void delete(String id) {
-		Visitor visitor = db.find(Visitor.class, id);
-		db.remove(id, visitor.get_rev());
+		SliderData sliderData = db.find(SliderData.class, id);
+		db.remove(id, sliderData.get_rev());
 		
 	}
 

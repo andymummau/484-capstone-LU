@@ -19,13 +19,13 @@ import java.util.Collection;
 
 import com.cloudant.client.api.Database;
 
-import wasdev.sample.Visitor;
+import wasdev.sample.SliderData;
 
 /**
  * Defines the API for a ToDo store.
  *
  */
-public interface VisitorStore {
+public interface SliderDataStore {
 
   	/**
 	 * Get the target db object.
@@ -41,29 +41,29 @@ public interface VisitorStore {
 	 * @return All Visitors.
   	 * @throws Exception 
 	 */
-  public Collection<Visitor> getAll();
+  public Collection<SliderData> getAll();
 
   /**
    * Gets an individual ToDo from the store.
    * @param id The ID of the ToDo to get.
    * @return The ToDo.
    */
-  public Visitor get(String id);
+  public SliderData get(String id);
 
   /**
    * Persists a Visitor to the store.
-   * @param td The ToDo to persist.
+   * @param sd The ToDo to persist.
    * @return The persisted ToDo.  The ToDo will not have a unique ID..
    */
-  public Visitor persist(Visitor vi);
+  public SliderData persist(SliderData sd);
 
   /**
    * Updates a ToDo in the store.
    * @param id The ID of the Visitor to update.
-   * @param td The Visitor with updated information.
+   * @param sd The Visitor with updated information.
    * @return The updated Visitor.
    */
-  public Visitor update(String id, Visitor vi);
+  public SliderData update(String id, SliderData sd);
 
   /**
    * Deletes a ToDo from the store.

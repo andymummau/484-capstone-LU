@@ -16,9 +16,9 @@
 package wasdev.sample.rest;
 
 import com.google.gson.Gson;
-import wasdev.sample.Visitor;
-import wasdev.sample.store.VisitorStore;
-import wasdev.sample.store.VisitorStoreFactory;
+import wasdev.sample.SliderData;
+import wasdev.sample.store.SliderDataStore;
+import wasdev.sample.store.SliderDataStoreFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
@@ -30,7 +30,7 @@ import java.util.List;
 public class SliderAPI extends Application {
 	
 	//Our database store
-	VisitorStore store = VisitorStoreFactory.getInstance();
+	SliderDataStore store = SliderDataStoreFactory.getInstance();
 
   /**
    * Gets all Visitors.
@@ -54,8 +54,8 @@ public class SliderAPI extends Application {
 			return "[]";
 		}
 		
-		List<String> words = new ArrayList<String>();
-		for (Visitor doc : store.getAll()) {
+		/*List<String> words = new ArrayList<String>();
+		for (SliderData doc : store.getAll()) {
 			String word = doc.getWord();
 			if (word != null){
 				words.add(word);
@@ -63,14 +63,18 @@ public class SliderAPI extends Application {
 		}
 
         List<String> urls = new ArrayList<String>();
-        for (Visitor doc : store.getAll()) {
+        for (SliderData doc : store.getAll()) {
             String url = doc.getUrl();
             if (url != null){
                 urls.add(url);
             }
+        }*/
+		List<SliderData> ourData = new ArrayList<>();
+		for (SliderData doc : store.getAll()) {
+		    ourData.add(doc);
         }
-		return "{'words': '" + words + "', 'url': '" + urls + "'}";
-        //new Gson().toJson(words);
+
+		return new Gson().toJson(ourData);
     }
     
     /**
@@ -93,19 +97,19 @@ public class SliderAPI extends Application {
      *   "name":"Bob"
      * }
      * </code>
-     * @param visitor The new Visitor to create.
+     * @param sliderData The new Visitor to create.
      * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
      */
-    @POST
+    /*@POST
     @Produces("application/text")
     @Consumes("application/json")
-    public String newToDo(Visitor visitor) {
+    public String newToDo(SliderData sliderData) {
       if(store == null) {
-    	  return String.format("Hello and welcome %s!", visitor.getName());
+    	  return String.format("Hello and welcome %s!", sliderData.getName());
       }
-      store.persist(visitor);
-      return String.format("Hello and welcome to %s! I've added you to the database.", visitor.getName());
+      store.persist(sliderData);
+      return String.format("Hello and welcome to %s! I've added you to the database.", sliderData.getName());
 
-    }
+    }*/
 
 }
