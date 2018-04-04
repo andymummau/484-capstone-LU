@@ -31,40 +31,26 @@ $scope.selectLanguage = function(ev) {
     });*/
 };
 $scope.viewTranslation = function(ev) {
-    $mdDialog.show({
-        controller: DialogController,
-        templateUrl: "templates/translationSlider.html",
-        targetEvent: ev,
-        scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
-    })
+    $http.get('api/sliderContent')
+    .then(function(response) {
+        $scope.dataArray = response.data;
+        console.log("Retriving from Database...");
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: "templates/translationSlider.html",
+                targetEvent: ev,
+                scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            })
+        })
     /*.then(function(answer) {
       $scope.alert = 'You said the information was "' + answer + '".';
     }, function() {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
-$http.get('api/sliderContent')
-    .then(function(response) {
-        $scope.dataArray = response;
-        console.log = (response);
-    })
-/*    $scope.dataArray = [
-      {
-        src: 'https://media.giphy.com/media/26FL1Z4aQQggwu57G/giphy.gif'
-      },
-      {
-        src: 'https://media.giphy.com/media/3o6Zt75NDGTAIeydck/giphy.gif'
-      },
-      {
-        src: 'https://media.giphy.com/media/l4q7X9WikgtfBKmCQ/giphy.gif'
-      },
-      {
-        src: 'https://media.giphy.com/media/l0MYtTptyL8h88UHm/giphy.gif'
-      },
-      {
-        src: 'https://media.giphy.com/media/l0HlBGjKUV8KJxDoc/giphy.gif'
-      }
-    ];*/
+
 $scope.englishInterface = function() {
 
         $scope.mHold = "Tap and Hold to Capture Audio";
@@ -99,7 +85,6 @@ $scope.spanishInterface = function() {
         $scope.mNewTran = "Nueva Traducción";
 };
 
-
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -112,7 +97,7 @@ $scope.upload = function(ev) {
     }, function() {
       $scope.alert = 'You cancelled the dialog.';
     });*/
-};
+}
 function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
         $mdDialog.hide();
@@ -123,7 +108,7 @@ function DialogController($scope, $mdDialog) {
     $scope.answer = function(answer) {
         $mdDialog.hide(answer);
     };
-};
+}
 //Get sentence from WATSON API and store to a variable
 $scope.printSentence = function() {
 try {
@@ -158,16 +143,18 @@ try {
             stream.on('error', function(err) {
                 console.log(err);
             });
+            }
         }
     }
-}
-//Error handling
-catch(error) {
-    console.log(error);
+    //Error handling
+    catch(error) {
+        console.log(error);
+    }
 }
 //Enable clear button after sentence is output
-document.getElementById("clearButton").removeAttribute("disabled");
-};
+$scope.clearSentence = function() {
+    document.getElementById("clearButton").removeAttribute("disabled");
+}
 //Temporarily clear code for demonstration
 $scope.clearSentence = function() {
     $scope.chips = [];
