@@ -32,16 +32,16 @@
     <md-card flex-gt-sm="100" flex-gt-md="70">
         <md-card-content layout-align="center center">
             <md-content>
-               <p id="diyChip">{{chips}}</p>
+               <p id="diyChip" ng-bind="capturedSentence"></p>
             </md-content>
-            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-mousedown="printSentence()" ng-mouseup="stopCapture()">
+            <md-button layout="column" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); clearSentenceActive()">
                 <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
                 <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
             </md-button>
             <p class="md-headline" layout="column" layout-align="center center">{{mHold}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="clearSentence(); disableTrans()">{{mClear}}</md-button>
+          <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans()" ng-disabled="true">{{mClear}}</md-button>
           <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event)">{{mTranslate}}</md-button>
         </md-card-actions>
       </md-card>

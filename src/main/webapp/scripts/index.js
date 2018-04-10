@@ -35,25 +35,23 @@ $scope.viewTranslation = function(ev) {
     .then(function(response) {
         $scope.dataArray = response.data;
         console.log("Retriving from Database...");
-            $mdDialog.show({
-                controller: DialogController,
-                templateUrl: "templates/translationSlider.html",
-                targetEvent: ev,
-                scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
-                clickOutsideToClose:true,
-                fullscreen: true // Only for -xs, -sm breakpoints.
-            })
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: "templates/translationSlider.html",
+            targetEvent: ev,
+            scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
         })
+    })
     /*.then(function(answer) {
       $scope.alert = 'You said the information was "' + answer + '".';
     }, function() {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 };
-
 $scope.englishInterface = function() {
-
-        $scope.mHold = "Tap and Hold to Capture Audio";
+        $scope.mHold = "Tap to Capture Audio";
         $scope.mClear = "CLEAR TEXT";
         $scope.mTranslate = "TRANSLATE";
         $scope.mTransHeader = "Translation";
@@ -67,10 +65,8 @@ $scope.englishInterface = function() {
         $scope.mClose = "Close";
         $scope.mNewTran = "New Translation";
 };
-
 $scope.spanishInterface = function() {
-
-        $scope.mHold = "Toque y Mantenga Presionado Para Capturar Audio";
+        $scope.mHold = "Toque Presionado Para Capturar Audio";
         $scope.mClear = "BORRAR TEXTO";
         $scope.mTranslate = "TRADUCIR";
         $scope.mTransHeader = "Traducción";
@@ -84,7 +80,6 @@ $scope.spanishInterface = function() {
         $scope.mClose = "Cerca";
         $scope.mNewTran = "Nueva Traducción";
 };
-
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -128,40 +123,51 @@ try {
             //Capture raw JSON data from API
             stream.on('data', function(data) {
                 $scope.$apply(function() {
-                    $scope.chips = data.results[0].alternatives[0].transcript;
+                    $scope.capturedSentence = data.results[0].alternatives[0].transcript;
+                    console.log("Intermediary Transcript: " + $scope.capturedSentence);
                 });
-                console.log("Transcript: " + $scope.chips);
-            });
-            //Tell Watson to wrap up speech capture and create final transcript
-            $scope.stopCapture = function() {
-                stream.stop();
-                console.log("-------Stoping Stream...--------");
-                //Enable "Translate" button
+                //Tell Watson to wrap up speech capture after pause and create final transcript
+                if(data.results[0] && data.results[0].final) {
+                    stream.stop();
+                    console.log('---------Stoping Stream...----------');
+                    //Send final sentence to DB for further processing in Java
+                    $scope.formSubmit = function() {
+                        $http({
+                            method: 'POST',
+                            url: 'api/translate',
+                            data: JSON.stringify({'fullSentence': $scope.capturedSentence }),
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        })
+                    };
+                    console.log('Final Sentence: ' + $scope.capturedSentence)
+                }
+                //Enable Translate button
                 document.getElementById("transButton").removeAttribute("disabled");
-            };
+            });
             //Error handling
             stream.on('error', function(err) {
                 console.log(err);
             });
-            }
         }
     }
-    //Error handling
-    catch(error) {
-        console.log(error);
-    }
+}
+//Error handling
+catch(error) {
+    console.log(error);
+}
 }
 //Enable clear button after sentence is output
-$scope.clearSentence = function() {
+$scope.clearSentenceActive = function() {
     document.getElementById("clearButton").removeAttribute("disabled");
 }
-//Temporarily clear code for demonstration
-$scope.clearSentence = function() {
-    $scope.chips = [];
     //Disable clear button after using
+$scope.clearSentenceDisable = function() {
+    $scope.capturedSentence = null;
     document.getElementById("clearButton").setAttribute("disabled", "disabled");
 }
-
+//Disable translate button
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }

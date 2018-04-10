@@ -16,7 +16,7 @@
         </md-card>
     </md-content>
     <div class="md-actions" layout="row">
-        <md-button ng-click="close(clearSentence()); disableTrans()"> {{mNewTran}} </md-button>
+        <md-button ng-click="close(); disableTrans(); clearSentenceDisable()"> {{mNewTran}} </md-button>
         <md-button ng-click="close()" class="md-raised md-primary"> {{mClose}} </md-button>
     </div>
 </md-dialog>
