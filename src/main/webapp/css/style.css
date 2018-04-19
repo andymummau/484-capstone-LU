@@ -60,6 +60,28 @@
 
 
 /* Translation Slider CSS */
+
+#carousel {
+    width:100%; 
+    height:300px;
+}
+#carousel #prev-button, #carousel #next-button {
+    position:absolute; 
+    top: 40%; 
+    font-size: 3em; 
+    color: #fff;
+} 
+#carousel #prev-button {
+    left: 10px;
+}
+#carousel #next-button {
+    right: 10px;
+}
+#carousel img {
+    width: 100%;
+    height: 100%;
+}
+
 .jk-carousel {
 	height: 100%;
 	overflow: hidden;
