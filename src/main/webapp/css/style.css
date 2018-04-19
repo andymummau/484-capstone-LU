@@ -57,9 +57,7 @@
     background: rgb(224,224,224);
     color: rgb(66,66,66);
 }
-.Wallop-list { margin: 15px 0; }
 
-.Wallop-item img { width: 100%; }
 
 /* Translation Slider CSS */
 .jk-carousel {
@@ -112,14 +110,12 @@
 	border-color: #ffffff;
 }
 
-#transSlider {
-    width: 20em;
-    height: 13em;
-}
-
-/*md-card {
-  margin: auto;
-  left: 0;
-  right: 0;
-  margin-bottom: 20px;
+/*#transSlider {
+    width: 50vh;
+    height: 50vh;
 }*/
+
+#translateDialog {
+    width: 80vh;
+    height: 80vh;
+}

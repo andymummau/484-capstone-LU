@@ -1,5 +1,5 @@
 angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'jkAngularCarousel'])
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'jkAngularCarousel', 'ui.carousel'])
 
 //Color Theming config
 .config(function($mdThemingProvider) {
@@ -31,7 +31,7 @@ $scope.selectLanguage = function(ev) {
     });*/
 };
 $scope.viewTranslation = function(ev) {
-    $http.get('api/sliderContent')
+    $http.get('../testSlider.json')
     .then(function(response) {
         $scope.dataArray = response.data;
         console.log("Retriving from Database...");
@@ -108,7 +108,7 @@ function DialogController($scope, $mdDialog) {
 $scope.printSentence = function() {
 try {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
+    xhr.open('GET', 'https://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(null);
     xhr.onreadystatechange = function() {

@@ -24,8 +24,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import java.util.ArrayList;
 import java.util.List;
-
-@ApplicationPath("api")
+//@ApplicationPath("api")
 @Path("/sliderContent")
 public class SliderAPI extends Application {
 	
