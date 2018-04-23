@@ -5,7 +5,6 @@ import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
 import com.google.gson.JsonObject;
 import wasdev.sample.Sentence;
-import wasdev.sample.SliderData;
 
 import java.io.IOException;
 import java.net.URL;
