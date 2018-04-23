@@ -123,3 +123,11 @@
   right: 0;
   margin-bottom: 20px;
 }*/
+
+#box, #buttonbox {
+    height: 90%;
+}
+
+#wheel {
+    margin-bottom: 10%;
+}
