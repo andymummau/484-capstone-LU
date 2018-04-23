@@ -1,8 +1,8 @@
-angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'jkAngularCarousel'])
+var app= angular
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'ngTouch']);
 
 //Color Theming config
-.config(function($mdThemingProvider) {
+app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue', {
       'default': '800',
@@ -16,7 +16,7 @@ angular
 })
 
 //Primary controller
-.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http, $interval) {
+app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http, $interval) {
 $scope.selectLanguage = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -31,8 +31,7 @@ $scope.selectLanguage = function(ev) {
     });*/
 };
 $scope.viewTranslation = function(ev) {
-    $scope.loading = true;
-    $http.get('api/sliderContent')
+    $http.get('../testSlider.json')
     .then(function(response) {
         $scope.dataArray = response.data;
         console.log("Retriving from Database...");
@@ -81,11 +80,11 @@ $scope.spanishInterface = function() {
         $scope.mClose = "Cerca";
         $scope.mNewTran = "Nueva Traducción";
 };
-    
+
 $scope.loadingScreen = function() {
     $scope.loading = true;
-};   
-    
+};
+
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -131,7 +130,7 @@ function DialogController($scope, $mdDialog) {
 $scope.printSentence = function() {
 try {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
+    xhr.open('GET', 'https://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(null);
     xhr.onreadystatechange = function() {
@@ -195,3 +194,32 @@ $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
 })
+app.directive('ngCarousel', function() {
+      return function(scope, element, attrs) {
+        var el = element[0];
+        var containerEl = el.querySelector("ul");
+        var slidesEl = containerEl.querySelectorAll("li");
+        scope.numSlides = slidesEl.length;
+        scope.curSlide = 1;
+        scope.$watch('curSlide', function(num) {
+          num = (num % scope.numSlides) + 1;
+          containerEl.style.left = (-1*100*(num-1)) + '%';
+        });
+
+        el.style.position = 'relative';
+        el.style.overflow = 'hidden';
+
+        containerEl.style.position = 'absolute';
+        containerEl.style.width = (scope.numSlides*100)+'%';
+        containerEl.style.listStyleType = 'none';
+        containerEl.style.margin =0;
+        containerEl.style.padding=0;
+        containerEl.style.transition = '1s';
+
+        for(var i=0; i<slidesEl.length; i++) {
+          var slideEl = slidesEl[i];
+          slideEl.style.display = 'inline-block';
+          slideEl.style.width = (100/scope.numSlides) + '%';
+        }
+      };
+    });

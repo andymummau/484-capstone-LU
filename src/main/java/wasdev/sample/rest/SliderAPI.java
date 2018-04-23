@@ -12,12 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *******************************************************************************/ 
+ *******************************************************************************/
 package wasdev.sample.rest;
 
 import com.google.gson.Gson;
 import wasdev.sample.SliderData;
-import wasdev.sample.store.SliderDataStore;
+import wasdev.sample.store.GenericStore;
 import wasdev.sample.store.SliderDataStoreFactory;
 
 import javax.ws.rs.*;
@@ -28,27 +28,27 @@ import java.util.List;
 @ApplicationPath("api")
 @Path("/sliderContent")
 public class SliderAPI extends Application {
-	
-	//Our database store
-	SliderDataStore store = SliderDataStoreFactory.getInstance();
 
-  /**
-   * Gets all Visitors.
-   * REST API example:
-   * <code>
-   * GET http://localhost:9080/GetStartedJava/api/visitors
-   * </code>
-   * 
-   * Response:
-   * <code>
-   * [ "Bob", "Jane" ]
-   * </code>
-   * @return A collection of all the Visitors
-   */
-    @GET
-    @Path("/")
-    @Produces({"application/json"})
-    public String getSliderContent() {
+	//Our database store
+	GenericStore<SliderData> store = SliderDataStoreFactory.getInstance();
+
+	/**
+	 * Gets all Visitors.
+	 * REST API example:
+	 * <code>
+	 * GET http://localhost:9080/GetStartedJava/api/visitors
+	 * </code>
+	 *
+	 * Response:
+	 * <code>
+	 * [ "Bob", "Jane" ]
+	 * </code>
+	 * @return A collection of all the Visitors
+	 */
+	@GET
+	@Path("/")
+	@Produces({"application/json"})
+	public String getSliderContent() {
 
 		if (store == null) {
 			return "[]";
@@ -71,35 +71,35 @@ public class SliderAPI extends Application {
         }*/
 		List<SliderData> ourData = new ArrayList<>();
 		for (SliderData doc : store.getAll()) {
-		    ourData.add(doc);
-        }
+			ourData.add(doc);
+		}
 
 		return new Gson().toJson(ourData);
-    }
-    
-    /**
-     * Creates a new Visitor.
-     * 
-     * REST API example:
-     * <code>
-     * POST http://localhost:9080/GetStartedJava/api/visitors
-     * <code>
-     * POST Body:
-     * <code>
-     * {
-     *   "name":"Bob"
-     * }
-     * </code>
-     * Response:
-     * <code>
-     * {
-     *   "id":"123",
-     *   "name":"Bob"
-     * }
-     * </code>
-     * @param sliderData The new Visitor to create.
-     * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
-     */
+	}
+
+	/**
+	 * Creates a new Visitor.
+	 *
+	 * REST API example:
+	 * <code>
+	 * POST http://localhost:9080/GetStartedJava/api/visitors
+	 * <code>
+	 * POST Body:
+	 * <code>
+	 * {
+	 *   "name":"Bob"
+	 * }
+	 * </code>
+	 * Response:
+	 * <code>
+	 * {
+	 *   "id":"123",
+	 *   "name":"Bob"
+	 * }
+	 * </code>
+	 * @param sliderData The new Visitor to create.
+	 * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
+	 */
     /*@POST
     @Produces("application/text")
     @Consumes("application/json")

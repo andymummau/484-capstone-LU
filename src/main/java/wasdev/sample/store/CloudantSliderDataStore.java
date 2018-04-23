@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *******************************************************************************/ 
+ *******************************************************************************/
 package wasdev.sample.store;
 
 import java.io.IOException;
@@ -25,27 +25,27 @@ import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
 import com.google.gson.JsonObject;
 
-import javafx.scene.control.Slider;
+//import javafx.scene.control.Slider;
 import wasdev.sample.SliderData;
 
-public class CloudantSliderDataStore implements SliderDataStore{
-	
+public class CloudantSliderDataStore implements GenericStore<SliderData>{
+
 	private Database db = null;
 	private static final String databaseName = "mydb";
-	
+
 	public CloudantSliderDataStore(){
 		CloudantClient cloudant = createClient();
 		if(cloudant!=null){
-		 db = cloudant.database(databaseName, true);
+			db = cloudant.database(databaseName, true);
 		}
 	}
-	
+
 	public Database getDB(){
 		return db;
 	}
 
 	private static CloudantClient createClient() {
-		
+
 		String url;
 
 		if (System.getenv("VCAP_SERVICES") != null) {
@@ -76,16 +76,16 @@ public class CloudantSliderDataStore implements SliderDataStore{
 			return null;
 		}
 	}
-	
+
 	@Override
 	public Collection<SliderData> getAll(){
-        List<SliderData> docs;
+		List<SliderData> docs;
 		try {
 			docs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse().getDocsAs(SliderData.class);
 		} catch (IOException e) {
 			return null;
 		}
-        return docs;
+		return docs;
 	}
 
 	@Override
@@ -106,14 +106,14 @@ public class CloudantSliderDataStore implements SliderDataStore{
 		sliderData.setUrl(newSliderData.getUrl());
 		db.update(sliderData);
 		return db.find(SliderData.class, id);
-		
+
 	}
 
 	@Override
 	public void delete(String id) {
 		SliderData sliderData = db.find(SliderData.class, id);
 		db.remove(id, sliderData.get_rev());
-		
+
 	}
 
 	@Override

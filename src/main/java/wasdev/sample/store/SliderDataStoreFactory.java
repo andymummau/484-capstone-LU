@@ -1,8 +1,10 @@
 package wasdev.sample.store;
 
+import wasdev.sample.SliderData;
+
 public class SliderDataStoreFactory {
 
-    private static SliderDataStore instance;
+    private static GenericStore<SliderData> instance;
     static {
         CloudantSliderDataStore cvif = new CloudantSliderDataStore();
         if(cvif.getDB() != null){
@@ -10,7 +12,7 @@ public class SliderDataStoreFactory {
         }
     }
 
-    public static SliderDataStore getInstance() {
+    public static GenericStore<SliderData> getInstance() {
         return instance;
     }
 
