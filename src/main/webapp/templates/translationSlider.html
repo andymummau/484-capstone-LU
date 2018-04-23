@@ -4,13 +4,17 @@
             <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
         </md-toolbar>
         <md-card id="transSlider" layout="column" layout-align="center center" style="padding-bottom: 10px" >
-            <section id="carousel" ng-carousel ng-swipe-right="curSlide=curSlide-1" ng-swipe-left="curSlide=curSlide+1">
-                <ul>
-                    <li ng-repeat="item in dataArray"><img src="{{item.url}}" /></li>
-                </ul>
-                <div id="prev-button" ng-click="curSlide=curSlide-1"> &lt; </div>
-                <div id="next-button" ng-click="curSlide=curSlide+1">&gt; </div>
-            </section>
+<div>
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <img ng-src="{{slide.image}}" style="height: 75vh; margin: auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{slide.id}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
         </md-card>
     </md-content>
     <div class="md-actions" layout="row">

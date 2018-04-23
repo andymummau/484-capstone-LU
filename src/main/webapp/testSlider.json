@@ -1,0 +1,8 @@
+[{
+  "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
+  "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
+  "translationID": "201804051800",
+  "fullSentence": "the quick brown fox jumps over the lazy dog",
+  "sentenceChunks": ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"],
+  "url": ["//unsplash.it/520/300","//unsplash.it/678/300","//unsplash.it/551/300","//unsplash.it/575/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300"]
+}]

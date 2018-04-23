@@ -1,5 +1,5 @@
 var app= angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'ngTouch']);
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'ngSanitize', 'ui.bootstrap']);
 
 //Color Theming config
 app.config(function($mdThemingProvider) {
@@ -34,7 +34,7 @@ $scope.viewTranslation = function(ev) {
     $http.get('../testSlider.json')
     .then(function(response) {
         $scope.dataArray = response.data;
-        console.log("Retriving from Database...");
+        console.log("Retriving Sentence from Database...");
         $mdDialog.show({
             controller: DialogController,
             templateUrl: "../templates/translationSlider.html",
@@ -171,33 +171,33 @@ $scope.clearSentenceDisable = function() {
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
-})
-app.directive('ngCarousel', function() {
-      return function(scope, element, attrs) {
-        var el = element[0];
-        var containerEl = el.querySelector("ul");
-        var slidesEl = containerEl.querySelectorAll("li");
-        scope.numSlides = slidesEl.length;
-        scope.curSlide = 1;   
-        scope.$watch('curSlide', function(num) {
-          num = (num % scope.numSlides) + 1;
-          containerEl.style.left = (-1*100*(num-1)) + '%';
-        });
-        
-        el.style.position = 'relative';
-        el.style.overflow = 'hidden';
 
-        containerEl.style.position = 'absolute';
-        containerEl.style.width = (scope.numSlides*100)+'%';
-        containerEl.style.listStyleType = 'none';
-        containerEl.style.margin =0;
-        containerEl.style.padding=0;
-        containerEl.style.transition = '1s';
-        
-        for(var i=0; i<slidesEl.length; i++) {
-          var slideEl = slidesEl[i];
-          slideEl.style.display = 'inline-block';
-          slideEl.style.width = (100/scope.numSlides) + '%';
-        }
-      };
+//Carousel
+  $scope.myInterval = 2000;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+  var slides = $scope.slides = [];
+  var currIndex = 0;
+  
+  
+  $scope.data = {
+  "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
+  "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
+  "translationID": "201804051800",
+  "fullSentence": "the quick brown fox jumps over the lazy dog",
+  "sentenceChunks": ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"],
+  "url": ["//unsplash.it/520/300","//unsplash.it/678/300","//unsplash.it/551/300","//unsplash.it/575/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300"]
+}
+
+var wordCount = $scope.data.sentenceChunks.length;
+var carouselUrl = $scope.data.url;
+var captionText = $scope.data.sentenceChunks;
+
+  for (var i = 0; i < wordCount; i++) {
+    slides.push({
+      image: carouselUrl[i],
+      text: captionText[i],
+      id: currIndex++
     });
+  }
+})
