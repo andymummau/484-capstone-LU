@@ -1,24 +1,20 @@
 <md-dialog id="translateDialog">
     <md-content class="md-padding">
-        <md-card-title>{{chips}}</md-card-title>
         <md-toolbar class="md-theme-indigo">
             <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
         </md-toolbar>
         <md-card id="transSlider" layout="column" layout-align="center center" style="padding-bottom: 10px" >
-          
-            <ui-carousel 
-  slides="dataArray.url"
-  slides-to-show="3"
-  slides-to-scroll="1"
-  initial-slide="1"
-  autoplay="true"
-  autoplay-speed="2000"
-  dots="true">
-
-  <carousel-item>
-    <img src="{{item}}" />
-  </carousel-item>
-</ui-carousel>
+<div>
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <img ng-src="{{slide.image}}" style="height: 75vh; margin: auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{slide.id}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
         </md-card>
     </md-content>
     <div class="md-actions" layout="row">

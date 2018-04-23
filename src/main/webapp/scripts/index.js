@@ -1,8 +1,8 @@
-angular
-    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'jkAngularCarousel', 'ui.carousel'])
+var app= angular
+    .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'ngSanitize', 'ui.bootstrap']);
 
 //Color Theming config
-.config(function($mdThemingProvider) {
+app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue', {
       'default': '800',
@@ -16,7 +16,7 @@ angular
 })
 
 //Primary controller
-.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http) {
+app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http, $interval) {
 $scope.selectLanguage = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -34,7 +34,7 @@ $scope.viewTranslation = function(ev) {
     $http.get('../testSlider.json')
     .then(function(response) {
         $scope.dataArray = response.data;
-        console.log("Retriving from Database...");
+        console.log("Retriving Sentence from Database...");
         $mdDialog.show({
             controller: DialogController,
             templateUrl: "templates/translationSlider.html",
@@ -80,6 +80,11 @@ $scope.spanishInterface = function() {
         $scope.mClose = "Cerca";
         $scope.mNewTran = "Nueva Traducción";
 };
+
+$scope.loadingScreen = function() {
+    $scope.loading = true;
+};
+
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -93,6 +98,23 @@ $scope.upload = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 }
+
+var self = this;
+self.activated = true;
+self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+$interval(function() {
+    self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+            self.determinateValue = 30;
+        }
+}, 100);
+
+
+
+
 function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
         $mdDialog.hide();
@@ -171,4 +193,33 @@ $scope.clearSentenceDisable = function() {
 $scope.disableTrans = function() {
    document.getElementById("transButton").setAttribute("disabled", "disabled");
 }
+
+//Carousel
+  $scope.myInterval = 2000;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+  var slides = $scope.slides = [];
+  var currIndex = 0;
+
+
+  $scope.data = {
+  "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
+  "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
+  "translationID": "201804051800",
+  "fullSentence": "the quick brown fox jumps over the lazy dog",
+  "sentenceChunks": ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"],
+  "url": ["//unsplash.it/520/300","//unsplash.it/678/300","//unsplash.it/551/300","//unsplash.it/575/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300"]
+}
+
+var wordCount = $scope.data.sentenceChunks.length;
+var carouselUrl = $scope.data.url;
+var captionText = $scope.data.sentenceChunks;
+
+  for (var i = 0; i < wordCount; i++) {
+    slides.push({
+      image: carouselUrl[i],
+      text: captionText[i],
+      id: currIndex++
+    });
+  }
 })
