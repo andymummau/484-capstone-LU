@@ -195,7 +195,7 @@ $scope.disableTrans = function() {
 }
 
 //Carousel
-  $scope.myInterval = 2000;
+  $scope.myInterval = 3000;
   $scope.noWrapSlides = false;
   $scope.active = 0;
   var slides = $scope.slides = [];
@@ -207,8 +207,8 @@ $scope.disableTrans = function() {
   "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
   "translationID": "201804051800",
   "fullSentence": "the quick brown fox jumps over the lazy dog",
-  "sentenceChunks": ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"],
-  "url": ["//unsplash.it/520/300","//unsplash.it/678/300","//unsplash.it/551/300","//unsplash.it/575/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300"]
+  "sentenceChunks": ["brown", "fox", "jumps", "lazy", "dog"],
+  "url": ["videos/brown.mp4", "videos/fox.mp4", "videos/jumped.mp4", "videos/lazy.mp4", "videos/dog.mp4"]
 }
 
 var wordCount = $scope.data.sentenceChunks.length;
