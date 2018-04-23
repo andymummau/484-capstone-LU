@@ -16,7 +16,7 @@ app.config(function($mdThemingProvider) {
 })
 
 //Primary controller
-app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http) {
+app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $http, $interval) {
 $scope.selectLanguage = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -37,7 +37,7 @@ $scope.viewTranslation = function(ev) {
         console.log("Retriving Sentence from Database...");
         $mdDialog.show({
             controller: DialogController,
-            templateUrl: "../templates/translationSlider.html",
+            templateUrl: "templates/translationSlider.html",
             targetEvent: ev,
             scope: angular.extend($scope.$new(), { close: function() {$mdDialog.cancel();} }),
             clickOutsideToClose:true,
@@ -80,6 +80,11 @@ $scope.spanishInterface = function() {
         $scope.mClose = "Cerca";
         $scope.mNewTran = "Nueva Traducción";
 };
+
+$scope.loadingScreen = function() {
+    $scope.loading = true;
+};
+
 $scope.upload = function(ev) {
     $mdDialog.show({
         controller: DialogController,
@@ -93,6 +98,23 @@ $scope.upload = function(ev) {
       $scope.alert = 'You cancelled the dialog.';
     });*/
 }
+
+var self = this;
+self.activated = true;
+self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+$interval(function() {
+    self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+            self.determinateValue = 30;
+        }
+}, 100);
+
+
+
+
 function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
         $mdDialog.hide();
@@ -178,8 +200,8 @@ $scope.disableTrans = function() {
   $scope.active = 0;
   var slides = $scope.slides = [];
   var currIndex = 0;
-  
-  
+
+
   $scope.data = {
   "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
   "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
