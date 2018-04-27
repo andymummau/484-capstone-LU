@@ -50,7 +50,7 @@
         </md-card-content>
         <md-card-actions layout="row" layout-align="end end">
             <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans()" ng-disabled="true">{{mClear}}</md-button>
-                <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingScreen(); formSubmit();">{{mTranslate}}</md-button>
+                <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon()">{{mTranslate}}</md-button>
             </md-card-actions>
       </md-card>
 </md-content>

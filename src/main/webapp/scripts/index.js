@@ -84,8 +84,12 @@ $scope.spanishInterface = function() {
         $scope.mNewTran = "Nueva Traducción";
 };
 
-$scope.loadingScreen = function() {
+$scope.loadingIcon = function() {
     $scope.loading = true;
+};
+
+$scope.cancelLoadingIcon = function() {
+    $scope.loading = false;
 };
 
 $scope.upload = function(ev) {
@@ -199,7 +203,7 @@ $scope.disableTrans = function() {
 }
 
 //Carousel
-$scope.myInterval = 0;  
+$scope.myInterval = 0;
 $scope.playCarousel = function(){
     $scope.myInterval = 3000;
 }
