@@ -38,7 +38,9 @@ public class Sentence {
         return translationID;
     }
 
-    public void setTranslationID(String translationID) { this.translationID = translationID; }
+    public void setTranslationID(String translationID) {
+        this.translationID = translationID;
+    }
 
     public String getFullSentence() {
         return fullSentence;
@@ -70,7 +72,7 @@ public class Sentence {
     }
 
     private String trimSentence(String fullSentence){
-        String trimmedSentence = fullSentence.trim().toLowerCase().replaceAll("[^a-zA-Z ]", "");
+        String trimmedSentence = fullSentence.trim().toLowerCase().replaceAll("[^a-zA-Z0-9 ]", "");
         return trimmedSentence;
     }
 }
