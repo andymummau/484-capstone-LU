@@ -31,7 +31,7 @@ $scope.selectLanguage = function(ev) {
     });*/
 };
 $scope.viewTranslation = function(ev) {
-    $http.get('../testSlider.json')
+    $http.get('testSlider.json')
     .then(function(response) {
         $scope.dataArray = response.data;
         console.log("Retriving Sentence from Database...");
@@ -81,8 +81,12 @@ $scope.spanishInterface = function() {
         $scope.mNewTran = "Nueva Traducción";
 };
 
-$scope.loadingScreen = function() {
+$scope.loadingIcon = function() {
     $scope.loading = true;
+};
+
+$scope.cancelLoadingIcon = function() {
+    $scope.loading = false;
 };
 
 $scope.upload = function(ev) {
