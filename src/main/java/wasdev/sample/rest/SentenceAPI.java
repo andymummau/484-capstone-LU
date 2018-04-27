@@ -88,6 +88,7 @@ public class SentenceAPI {
 @POST
 @Consumes("application/json")
 public void newSentence(Sentence sentence) {
-  store.persist(sentence);
+    sentence.chunkify();
+    store.persist(sentence);
 }
 }
