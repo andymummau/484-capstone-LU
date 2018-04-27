@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@ApplicationPath("api")
-@Path("/sliderContent")
+@Path("/sentenceAPI")
 public class SentenceAPI {
 
     //Our database store

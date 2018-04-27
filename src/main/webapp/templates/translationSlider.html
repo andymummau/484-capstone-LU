@@ -7,18 +7,19 @@
 <div>
     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
       <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-          <video autoplay loop muted="" controls style="height: 75vh; margin: auto;">
-            <source ng-src="{{slide.image}}">
+          <video autoplay loop muted style="height: 75vh; margin: auto;">
+            <source ng-src="{{slide.image}}" type="video/mp4">
             <p class="warning">Your browser does not support HTML5 video.</p>
           </video>
-        <!--<img ng-src="{{slide.image}}" style="height: 75vh; margin: auto;">-->
         <div class="carousel-caption">
-          <h4>Slide {{slide.id}}</h4>
-          <p>{{slide.text}}</p>
+          <span md-headline style="margin: 0px;">{{slide.text}}</span>
         </div>
       </div>
     </div>
   </div>
+      <md-button class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="playCarousel()">
+            <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
+        </md-button>        
         </md-card>
     </md-content>
     <div class="md-actions" layout="row">

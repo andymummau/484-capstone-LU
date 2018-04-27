@@ -16,6 +16,7 @@ public class MyApplication extends Application {
         classes.add(MultiPartFeature.class);
         classes.add(UploadFiles.class);
         classes.add(SliderAPI.class);
+        classes.add(SentenceAPI.class);
         return classes;
     }
 }

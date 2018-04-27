@@ -182,7 +182,8 @@
 }
 
 .carousel-indicators {
-  position: absolute;
+  display: none;
+    position: absolute;
   bottom: 10px;
   left: 50%;
   z-index: 15;
@@ -215,15 +216,13 @@
 
 .carousel-caption {
   position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
+    bottom: 0px;
   z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    width: 100%;
 }
 
 .carousel-caption .btn {
