@@ -16,7 +16,6 @@ public class Sentence {
     public Sentence(String translationID, String fullSentence) {
         this.translationID = translationID;
         this.fullSentence = fullSentence;
-        sentenceChunks = getSentenceChunks(fullSentence);
     }
 
     public String get_id() {
@@ -39,9 +38,7 @@ public class Sentence {
         return translationID;
     }
 
-    public void setTranslationID(String translationID) {
-        this.translationID = translationID;
-    }
+    public void setTranslationID(String translationID) { this.translationID = translationID; }
 
     public String getFullSentence() {
         return fullSentence;
@@ -49,6 +46,10 @@ public class Sentence {
 
     public void setFullSentence(String fullSentence) {
         this.fullSentence = fullSentence;
+    }
+
+    public void chunkify() {
+        this.sentenceChunks = getSentenceChunks(fullSentence);
     }
 
     public String toString(){

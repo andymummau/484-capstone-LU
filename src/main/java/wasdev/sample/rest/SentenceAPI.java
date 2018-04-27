@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@ApplicationPath("api")
-@Path("/sliderContent")
+@Path("/sentenceAPI")
 public class SentenceAPI {
 
     //Our database store
@@ -88,6 +88,7 @@ public class SentenceAPI {
 @POST
 @Consumes("application/json")
 public void newSentence(Sentence sentence) {
-  store.persist(sentence);
+    sentence.chunkify();
+    store.persist(sentence);
 }
 }
