@@ -38,9 +38,7 @@ public class Sentence {
         return translationID;
     }
 
-    public void setTranslationID(String translationID) {
-        this.translationID = translationID;
-    }
+    public void setTranslationID(String translationID) { this.translationID = translationID; }
 
     public String getFullSentence() {
         return fullSentence;

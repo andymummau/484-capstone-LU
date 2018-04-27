@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationPath("api")
-@Path("/sliderContent")
+@Path("/results")
 public class SliderAPI extends Application {
 
 	//Our database store

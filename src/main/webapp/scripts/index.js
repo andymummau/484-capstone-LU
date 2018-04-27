@@ -31,8 +31,10 @@ $scope.selectLanguage = function(ev) {
     });*/
 };
 $scope.viewTranslation = function(ev) {
-    $http.get('../testSlider.json')
-    .then(function(response) {
+    $http.get("api/results")
+    .then(
+        //If DB call is successful
+        function(response) {
         $scope.dataArray = response.data;
         console.log("Retriving Sentence from Database...");
         $mdDialog.show({
@@ -44,6 +46,7 @@ $scope.viewTranslation = function(ev) {
             fullscreen: true // Only for -xs, -sm breakpoints.
         })
     })
+    //Error handling
     /*.then(function(answer) {
       $scope.alert = 'You said the information was "' + answer + '".';
     }, function() {
@@ -130,7 +133,7 @@ function DialogController($scope, $mdDialog) {
 $scope.printSentence = function() {
 try {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
+    xhr.open('GET', '//luwatsonproxy.mybluemix.net/WatsonProxy/api/speech-to-text/token', true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(null);
     xhr.onreadystatechange = function() {
@@ -156,12 +159,13 @@ try {
                     $scope.formSubmit = function() {
                         $http({
                             method: 'POST',
-                            url: 'api/translate',
-                            data: JSON.stringify({'fullSentence': $scope.capturedSentence }),
+                            url: 'api/sentenceAPI',
+                            data: JSON.stringify({'translationID': Date.now(), 'fullSentence': $scope.capturedSentence }),
                             headers: {
                                 'Content-type': 'application/json'
                             }
                         })
+                        console.log("POST: " + $scope.capturedSentence)
                     };
                     console.log('Final Sentence: ' + $scope.capturedSentence)
                 }
@@ -195,7 +199,10 @@ $scope.disableTrans = function() {
 }
 
 //Carousel
-  $scope.myInterval = 2000;
+$scope.myInterval = 0;  
+$scope.playCarousel = function(){
+    $scope.myInterval = 3000;
+}
   $scope.noWrapSlides = false;
   $scope.active = 0;
   var slides = $scope.slides = [];
@@ -207,8 +214,8 @@ $scope.disableTrans = function() {
   "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
   "translationID": "201804051800",
   "fullSentence": "the quick brown fox jumps over the lazy dog",
-  "sentenceChunks": ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"],
-  "url": ["//unsplash.it/520/300","//unsplash.it/678/300","//unsplash.it/551/300","//unsplash.it/575/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300","//unsplash.it/501/300"]
+  "sentenceChunks": ["brown", "fox", "jumps", "lazy", "dog"],
+  "url": ["videos/brown.mp4", "videos/fox.mp4", "videos/jumped.mp4", "videos/lazy.mp4", "videos/dog.mp4"]
 }
 
 var wordCount = $scope.data.sentenceChunks.length;
