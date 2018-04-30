@@ -17,9 +17,12 @@
       </div>
     </div>
   </div>
-      <md-button class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="playCarousel()">
-            <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
-        </md-button>        
+      <md-button ng-hide="pauseButton" class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="pauseCarousel()">
+          <md-icon md-svg-src="images/ic_pause_white_48px.svg"></md-icon>
+        </md-button>   
+            <md-button ng-hide="playButton" class="md-fab md-fab-bottom-left" aria-label="Play" ng-click="playCarousel()">  
+        <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
+        </md-button> 
         </md-card>
     </md-content>
     <div class="md-actions" layout="row">
