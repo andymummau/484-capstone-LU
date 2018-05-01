@@ -1,25 +1,20 @@
-.main {
-    height: 100%;
-    width: 10vh;
-}
-
+/*-----Activate Microphone Button-----*/
 #micbut {
-    margin-left: auto;
-    margin-right: auto;
+    /*margin-left: auto;
+    margin-right: auto;*/
     width: 20vh;
     height: 20vh;
 }
-
 #mic_icon {
     width: 60%;
     height: 60%;
 }
 
+/*-----Select Language Dialog-----*/
 #select {
     text-align: center;
     margin-bottom: 0;
 }
-
 #select2 {
     text-align: center;
     font-size: 80%;
@@ -27,51 +22,48 @@
     margin-bottom: 0;
 }
 
-/*-----Chips-----*/
-#diyChips {
-    cursor: default;
-    border-radius: 16px;
-    display: block;
-    height: 32px;
-    line-height: 32px;
-    margin: 8px 8px 0 0;
-    padding: 0 12px 0 12px;
-    float: left;
-    box-sizing: border-box;
-    max-width: 100%;
-    position: relative;
-}
-
+/*-----Speech to Text Display-----*/
 #diyChip {
-    cursor: default;
+    cursor: text;
     border-radius: 16px;
     display: block;
-    height: 32px;
-    line-height: 32px;
-    margin: 8px 8px 0 0;
+    margin: 8px 8px 20px 0;
     padding: 0 12px 0 12px;
-    float: left;
     box-sizing: border-box;
     max-width: 100%;
     position: relative;
     background: rgb(224,224,224);
     color: rgb(66,66,66);
+    font-size: 150%;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 1;
+    max-height: 22vh;
+    overflow: scroll;
 }
 
-/*#transSlider {
-    width: 50vh;
-    height: 50vh;
-}*/
-
-#translateDialog {
-    width: 80vh;
-    height: 80vh;
-}
-
+/*-----Loading Spinner-----*/
 #box, #buttonbox {
     height: 90%;
 }
 
 #wheel {
     margin-bottom: 10%;
+}
+
+/*-----Main Content-----*/
+#mdcardContainer {
+    position: relative;
+}
+
+#cardActionsAlign {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 0;
 }
