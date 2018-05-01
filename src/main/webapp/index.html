@@ -13,42 +13,38 @@
 </head>
     
 <body>
-<div ng-controller="AppCtrl" layout="column" ng-cloak="" class="toolbardemoBasicUsage" ng-app="MyApp" ng-init="selectLanguage($event)" layout-fill>
+<div ng-controller="AppCtrl" layout="column" ng-app="MyApp" ng-init="viewTranslation($event)" layout-fill>
 <md-content>
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
         <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translator</h2>
         <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
-            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">{{mLanguage}}</md-tooltip>
+            <md-tooltip md-direction="bottom">{{mLanguage}}</md-tooltip>
             <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
         </md-button>
         <md-button class="md-fab md-mini" aria-label="Upload" ng-click="upload($event)">
-            <md-tooltip md-direction="bottom" md-visible="false" md-autohide="false">{{mUpload}}</md-tooltip>
+            <md-tooltip md-direction="bottom">{{mUpload}}</md-tooltip>
             <md-icon md-svg-src="images/ic_file_upload_white_48px.svg"></md-icon>
         </md-button>
       </div>
     </md-toolbar>
   </md-content>
-
 <md-content id="box" class="md-padding" layout-xs="column" layout="row" layout-align="center center">
-    <md-card layout-fill id="displaybox" flex-gt-sm="100" flex-gt-md="70">
-        <md-card-content id="buttonbox">
-            <md-content>
-               <p id="diyChip" ng-bind="capturedSentence"></p>
-            </md-content>
-            <div id="buttoncenter" layout="column" layout-fill layout-align="center center">                
+    <md-card id="mdcardContainer" layout-fill flex-gt-sm="100" flex-gt-md="70">
+        <md-card-content>
+              <div contenteditable="true" id="diyChip" ng-bind="capturedSentence"></div>
+            <div class="Absolute-Center" layout="column" layout-align="center center">                
                 <md-button layout="column" ng-hide="loading" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); clearSentenceActive()">
                     <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
                     <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
                 </md-button>  
                 <p class="md-headline" ng-hide="loading" layout="column" layout-align="end center">{{mHold}}</p>
-                
                 <div id="wheel" ng-show="loading" layout="row" layout-sm="column" layout-align="center center">
                     <md-progress-circular md-mode="indeterminate" md-diameter="60"></md-progress-circular>
                 </div>
             </div>        
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end end">
+        <md-card-actions id="cardActionsAlign" layout="row" layout-align="end end">
             <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans()" ng-disabled="true">{{mClear}}</md-button>
                 <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon()">{{mTranslate}}</md-button>
             </md-card-actions>
@@ -60,20 +56,20 @@ Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
 -->
     <script src="scripts/watson-speech.js"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
-    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
-    <script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>
-    <script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js'></script>
+    <script src='//s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+    <script src='//cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>
+    <script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
 
 
     <script src="scripts/ui-bootstrap-tpls-2.5.0.js"></script>
-    <script  src="scripts/index.js"></script>
+    <script src="scripts/index.js"></script>
 
 </body>
 </html>

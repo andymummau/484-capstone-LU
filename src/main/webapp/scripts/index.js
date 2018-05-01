@@ -61,13 +61,13 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
   $scope.mNewTran = "New Translation";
  };
  $scope.spanishInterface = function() {
-  $scope.mHold = "Toque Presionado Para Capturar Audio";
+  $scope.mHold = "Toca para Capturar Audio";
   $scope.mClear = "BORRAR TEXTO";
   $scope.mTranslate = "TRADUCIR";
   $scope.mTransHeader = "Traducción";
-  $scope.mUploadMsg = "Cargue Su Contribución";
+  $scope.mUploadMsg = "Cargue su Contribución";
   $scope.mUpload = "Subir";
-  $scope.mUploadFill = "Palabra Para Subir";
+  $scope.mUploadFill = "Palabra para Subir";
   $scope.mCancel = "CANCELAR";
   $scope.mChoose = "ESCOGE UNA FOTO";
   $scope.mLanguage = "Seleccione el Idioma";
