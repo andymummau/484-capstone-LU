@@ -8,6 +8,7 @@ public class Sentence {
     private String translationID;
     private String fullSentence;
     private LinkedList<String> sentenceChunks = new LinkedList<>();
+    private LinkedList<String> urls = new LinkedList<>();
 
     public Sentence() {
 
@@ -50,8 +51,12 @@ public class Sentence {
         this.fullSentence = fullSentence;
     }
 
+    public void addUrl(String url) {
+        this.urls.add(url);
+    }
+
     public void chunkify() {
-        this.sentenceChunks = getSentenceChunks(fullSentence);
+        this.sentenceChunks = createSentenceChunks(fullSentence);
     }
 
     public String toString(){
@@ -62,8 +67,11 @@ public class Sentence {
         return myString;
     }
 
-    // .trim().toLowerCase().replaceAll("[^a-zA-Z ]", "")
-    private LinkedList<String> getSentenceChunks(String fullSentence) {
+    public LinkedList<String> getSentenceChunks() {
+        return sentenceChunks;
+    }
+
+    private LinkedList<String> createSentenceChunks(String fullSentence) {
         String mySentence = trimSentence(fullSentence);
         for(String s: mySentence.split(" ")) {
             sentenceChunks.add(s);

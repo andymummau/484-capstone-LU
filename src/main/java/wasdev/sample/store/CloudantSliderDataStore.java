@@ -31,7 +31,7 @@ import wasdev.sample.SliderData;
 public class CloudantSliderDataStore implements GenericStore<SliderData>{
 
 	private Database db = null;
-	private static final String databaseName = "mydb";
+	private static final String databaseName = "words-url";
 
 	public CloudantSliderDataStore(){
 		CloudantClient cloudant = createClient();

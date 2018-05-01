@@ -84,8 +84,6 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
     @Override
     public Sentence update(String id, Sentence newSentence) {
         Sentence sentence = db.find(Sentence.class, id);
-        //sentence.setWord(newSliderData.getWord());
-        //sentence.setUrl(newSliderData.getUrl());
         db.update(sentence);
         return db.find(Sentence.class, id);
 

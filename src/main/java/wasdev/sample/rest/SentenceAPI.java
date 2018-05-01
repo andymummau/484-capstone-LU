@@ -2,8 +2,10 @@ package wasdev.sample.rest;
 
 import com.google.gson.Gson;
 import wasdev.sample.Sentence;
+import wasdev.sample.SliderData;
 import wasdev.sample.store.GenericStore;
 import wasdev.sample.store.SentenceStoreFactory;
+import wasdev.sample.store.SliderDataStoreFactory;
 
 import javax.ws.rs.*;
 //import javax.ws.rs.core.Application;
@@ -14,8 +16,9 @@ import java.util.List;
 @Path("/sentenceAPI")
 public class SentenceAPI {
 
-    //Our database store
-    GenericStore<Sentence> store = SentenceStoreFactory.getInstance();
+    //Our database store1
+    GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
+    GenericStore<SliderData> sliderDataStore = SliderDataStoreFactory.getInstance();
 
     /**
      * Gets all Visitors.
@@ -35,12 +38,12 @@ public class SentenceAPI {
     @Produces({"application/json"})
     public String getSliderContent() {
 
-        if (store == null) {
+        if (sentenceStore == null) {
             return "[]";
         }
 
     /*List<String> words = new ArrayList<String>();
-    for (SliderData doc : store.getAll()) {
+    for (SliderData doc : store1.getAll()) {
         String word = doc.getWord();
         if (word != null){
             words.add(word);
@@ -48,14 +51,14 @@ public class SentenceAPI {
     }
 
     List<String> urls = new ArrayList<String>();
-    for (SliderData doc : store.getAll()) {
+    for (SliderData doc : store1.getAll()) {
         String url = doc.getUrl();
         if (url != null){
             urls.add(url);
         }
     }*/
         List<Sentence> ourData = new ArrayList<>();
-        for (Sentence doc : store.getAll()) {
+        for (Sentence doc : sentenceStore.getAll()) {
             ourData.add(doc);
         }
 
@@ -85,10 +88,22 @@ public class SentenceAPI {
      * @param sentence The new Visitor to create.
      * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
      */
-@POST
-@Consumes("application/json")
-public void newSentence(Sentence sentence) {
-    sentence.chunkify();
-    store.persist(sentence);
-}
+    @POST
+    @Consumes("application/json")
+    public void newSentence(Sentence sentence) {
+        sentence.chunkify();
+        matchWords(sentence);
+        sentenceStore.persist(sentence);
+    }
+
+    private void matchWords(Sentence sentence) {
+
+        for (String word : sentence.getSentenceChunks()) {
+            for (SliderData data : sliderDataStore.getAll()){
+                if(data.getWord().equals(word)) {
+                    sentence.addUrl(data.getUrl());
+                }
+            }
+        }
+    }
 }
