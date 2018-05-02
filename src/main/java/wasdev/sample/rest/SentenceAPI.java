@@ -15,7 +15,7 @@ import java.util.List;
 //@ApplicationPath("api")
 @Path("/sentenceAPI")
 public class SentenceAPI {
-    private Sentence query;
+    Sentence query;
 
     //Our database store1
     GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
@@ -47,7 +47,7 @@ public class SentenceAPI {
         for (Sentence doc : sentenceStore.getAll()) {
             ourData.add(doc);
         }*/
-
+        System.out.println(query.get_id());
         Sentence ourData = sentenceStore.get(query.get_id());
 
         return new Gson().toJson(ourData);

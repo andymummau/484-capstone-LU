@@ -32,8 +32,7 @@
 <md-content id="box" class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <md-card id="mdcardContainer" layout-fill flex-gt-sm="100" flex-gt-md="70">
         <md-card-content>
-            <textarea id="diyChip" ng-model="capturedSentence"></textarea>
-              <div contenteditable="true" id="diyChip" ng-bind="capturedSentence"></div>
+              <div contenteditable="true" id="diyChip" ng-model="capturedSentence"></div>
             <div class="Absolute-Center" layout="column" layout-align="center center">                
                 <md-button layout="column" ng-hide="loading" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); clearSentenceActive()">
                     <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
@@ -47,7 +46,7 @@
         </md-card-content>
         <md-card-actions id="cardActionsAlign" layout="row" layout-align="end end">
             <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans()" ng-disabled="true">{{mClear}}</md-button>
-                <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon()">{{mTranslate}}</md-button>
+                <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon(); postTranslation()">{{mTranslate}}</md-button>
             </md-card-actions>
       </md-card>
 </md-content>
