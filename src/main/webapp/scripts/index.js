@@ -135,8 +135,7 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
        if (data.results[0] && data.results[0].final) {
         stream.stop();
         console.log('---------Stoping Stream...----------');
-        //Send final sentence to DB for further processing in Java
-        $scope.formSubmit = function() {
+        //Send final sentence to DB for further processing in Java backend
          $http({
           method: 'POST',
           url: 'api/sentenceAPI',
@@ -149,7 +148,6 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
           }
          })
          console.log("POST: " + $scope.capturedSentence)
-        };
         console.log('Final Sentence: ' + $scope.capturedSentence)
        }
        //Enable Translate button
@@ -170,11 +168,10 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
 
 //-----View Translation pop-up dialog-----
  $scope.viewTranslation = function(ev) {
-  $http.get("testSlider.json") //api/results
-   .then(
+  $http.get("api/sentenceAPI") //api/results
     //If DB call is successful
-    function(response) {
-     $scope.dataArray = response.data;
+    .then(function(response) {
+     $scope.translationResults = response.data;
      console.log("Retriving Sentence from Database...");
      $mdDialog.show({
       controller: DialogController,
@@ -188,6 +185,20 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
       clickOutsideToClose: true,
       fullscreen: true // Only for -xs, -sm breakpoints.
      })
+      var slides = $scope.slides = [];
+ var currIndex = 0;
+ var wordCount = $scope.translationResults.sentenceChunks.length;
+ var carouselUrl = $scope.translationResults.url;
+ var captionText = $scope.translationResults.sentenceChunks;
+      
+       //Push each database item onto a stack for carousel to loop through
+ for (var i = 0; i < wordCount; i++) {
+  slides.push({
+   image: carouselUrl[i],
+   text: captionText[i],
+   id: currIndex++
+  });
+ }
     })
  };
 
@@ -208,25 +219,21 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
 
 //-----Translation Carousel-----
   //Retrieve final translation from database with URL
-  $scope.translationResults = {
+  /*$scope.translationResults = {
   "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
   "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
   "translationID": "201804051800",
   "fullSentence": "the quick brown fox jumps over the lazy dog",
   "sentenceChunks": ["brown", "fox", "jumps", "lazy", "dog"],
   "url": ["videos/brown.mp4", "videos/fox.mp4", "videos/jumped.mp4", "videos/lazy.mp4", "videos/dog.mp4"]
- }
+ }*/
  //Carousel Parameters
  $scope.myInterval = 3000;
  $scope.pauseButton = false;
  $scope.playButton = true;
  $scope.noWrapSlides = false;
  $scope.active = 0;
- var slides = $scope.slides = [];
- var currIndex = 0;
- var wordCount = $scope.translationResults.sentenceChunks.length;
- var carouselUrl = $scope.translationResults.url;
- var captionText = $scope.translationResults.sentenceChunks;
+ 
  //Pause Carousel
  $scope.pauseCarousel = function() {
   $scope.pauseButton = true;
@@ -239,12 +246,5 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
   $scope.playButton = true;
   $scope.myInterval = 3000;
  }
- //Push each database item onto a stack for carousel to loop through
- for (var i = 0; i < wordCount; i++) {
-  slides.push({
-   image: carouselUrl[i],
-   text: captionText[i],
-   id: currIndex++
-  });
- }
+
 })
