@@ -15,6 +15,7 @@ import java.util.List;
 //@ApplicationPath("api")
 @Path("/sentenceAPI")
 public class SentenceAPI {
+    private Sentence query;
 
     //Our database store1
     GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
@@ -42,25 +43,12 @@ public class SentenceAPI {
             return "[]";
         }
 
-    /*List<String> words = new ArrayList<String>();
-    for (SliderData doc : store1.getAll()) {
-        String word = doc.getWord();
-        if (word != null){
-            words.add(word);
-        }
-    }
-
-    List<String> urls = new ArrayList<String>();
-    for (SliderData doc : store1.getAll()) {
-        String url = doc.getUrl();
-        if (url != null){
-            urls.add(url);
-        }
-    }*/
-        List<Sentence> ourData = new ArrayList<>();
+        /*List<Sentence> ourData = new ArrayList<>();
         for (Sentence doc : sentenceStore.getAll()) {
             ourData.add(doc);
-        }
+        }*/
+
+        Sentence ourData = sentenceStore.get(query.get_id());
 
         return new Gson().toJson(ourData);
     }
@@ -93,7 +81,7 @@ public class SentenceAPI {
     public void newSentence(Sentence sentence) {
         sentence.chunkify();
         matchWords(sentence);
-        sentenceStore.persist(sentence);
+        query = sentenceStore.persist(sentence);
     }
 
     private void matchWords(Sentence sentence) {
