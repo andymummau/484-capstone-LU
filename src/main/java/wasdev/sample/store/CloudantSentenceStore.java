@@ -3,6 +3,8 @@ package wasdev.sample.store;
 import com.cloudant.client.api.ClientBuilder;
 import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import wasdev.sample.Sentence;
 
@@ -77,6 +79,14 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
 
     @Override
     public Sentence persist(Sentence td) {
+        //String id = db.save(td).getId();
+        /*JsonObject json = new JsonObject();
+        Gson gson = new Gson();
+        gson.
+        json.addProperty("_id", td.getTranslationID());
+        json.addProperty("_rev", td.get_rev());
+        json.addProperty("fullSentence", td.getFullSentence());*/
+
         String id = db.save(td).getId();
         return db.find(Sentence.class, id);
     }
@@ -100,4 +110,9 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
     public int count() throws Exception {
         return getAll().size();
     }
+
+
+    /*public Sentence getByTranslateID(String transID) {
+        return db.find(Sentence.class, transID);
+    }*/
 }

@@ -134,7 +134,7 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
        //Tell Watson to wrap up speech capture after pause and create final transcript
        if (data.results[0] && data.results[0].final) {
         stream.stop();
-        console.log('---------Stoping Stream...----------');
+        console.log('---------Stopping Stream...----------');
         //Send final sentence to DB for further processing in Java backend
          $scope.postTranslation = function() {$http({
           method: 'POST',
@@ -173,6 +173,7 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
     //If DB call is successful
     .then(function(response) {
      $scope.translationResults = response.data;
+      console.log($scope.translationResults);
      console.log("Retriving Sentence from Database...");
      $mdDialog.show({
       controller: DialogController,
@@ -189,8 +190,11 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
       var slides = $scope.slides = [];
  var currIndex = 0;
  var wordCount = $scope.translationResults.sentenceChunks.length;
- var carouselUrl = $scope.translationResults.url;
+console.log(wordCount);
+ var carouselUrl = $scope.translationResults.urls;
+      console.log(carouselUrl);
  var captionText = $scope.translationResults.sentenceChunks;
+      console.log(captionText);
       
        //Push each database item onto a stack for carousel to loop through
  for (var i = 0; i < wordCount; i++) {
