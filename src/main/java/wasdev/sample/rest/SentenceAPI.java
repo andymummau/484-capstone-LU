@@ -6,34 +6,41 @@ import wasdev.sample.SliderData;
 import wasdev.sample.store.GenericStore;
 import wasdev.sample.store.SentenceStoreFactory;
 import wasdev.sample.store.SliderDataStoreFactory;
+import com.cloudant.client.api.Database;
 
 import javax.ws.rs.*;
-//import javax.ws.rs.core.Application;
+/*import javax.ws.rs.core.Application;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;*/
 
-//@ApplicationPath("api")
+@ApplicationPath("api")
 @Path("/sentenceAPI")
 public class SentenceAPI {
-    private Sentence query;
+
+    static String transID;
 
     //Our database store1
     GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
     GenericStore<SliderData> sliderDataStore = SliderDataStoreFactory.getInstance();
 
-    /**
-     * Gets all Visitors.
-     * REST API example:
-     * <code>
-     * GET http://localhost:9080/GetStartedJava/api/visitors
-     * </code>
-     *
-     * Response:
-     * <code>
-     * [ "Bob", "Jane" ]
-     * </code>
-     * @return A collection of all the Visitors
-     */
+    public String getTransID() {
+        return transID;
+    }
+
+    public void setTransID(String transID) {
+        this.transID = transID;
+    }
+
+    @POST
+    @Consumes("application/json")
+    public void newSentence(Sentence sentence) {
+        setTransID(sentence.getTranslationID());
+        sentence.set_id(sentence.getTranslationID());
+        sentence.chunkify();
+        matchWords(sentence);
+        sentenceStore.persist(sentence);
+    }
+
     @GET
     @Path("/")
     @Produces({"application/json"})
@@ -48,44 +55,15 @@ public class SentenceAPI {
             ourData.add(doc);
         }*/
 
-        Sentence ourData = sentenceStore.get(query.get_id());
+        //System.out.println("getSliderContent:" + getTransID());
+        Sentence ourData = sentenceStore.get(getTransID());
 
         return new Gson().toJson(ourData);
     }
 
-    /**
-     * Creates a new Visitor.
-     *
-     * REST API example:
-     * <code>
-     * POST http://localhost:9080/GetStartedJava/api/visitors
-     * <code>
-     * POST Body:
-     * <code>
-     * {
-     *   "name":"Bob"
-     * }
-     * </code>
-     * Response:
-     * <code>
-     * {
-     *   "id":"123",
-     *   "name":"Bob"
-     * }
-     * </code>
-     * @param sentence The new Visitor to create.
-     * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
-     */
-    @POST
-    @Consumes("application/json")
-    public void newSentence(Sentence sentence) {
-        sentence.chunkify();
-        matchWords(sentence);
-        query = sentenceStore.persist(sentence);
-    }
 
     private void matchWords(Sentence sentence) {
-
+        System.out.println("matchWords:" + getTransID());
         for (String word : sentence.getSentenceChunks()) {
             for (SliderData data : sliderDataStore.getAll()){
                 if(data.getWord().equals(word)) {

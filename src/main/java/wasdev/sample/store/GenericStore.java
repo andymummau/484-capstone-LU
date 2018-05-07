@@ -19,8 +19,6 @@ import java.util.Collection;
 
 import com.cloudant.client.api.Database;
 
-//import wasdev.sample.SliderData;
-
 public interface GenericStore<T> {
 
     public Database getDB();

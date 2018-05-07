@@ -16,52 +16,43 @@
 package wasdev.sample.rest;
 
 import com.google.gson.Gson;
-import wasdev.sample.SliderData;
+//import wasdev.sample.SliderData;
 import wasdev.sample.Sentence;
 import wasdev.sample.store.GenericStore;
 import wasdev.sample.store.SentenceStoreFactory;
-import wasdev.sample.store.SliderDataStoreFactory;
+import wasdev.sample.rest.SentenceAPI;
+//import wasdev.sample.store.SliderDataStoreFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationPath("api")
 @Path("/results")
 public class TranslationResultsAPI extends Application {
 
 	//Our database store1
-	GenericStore<SliderData> store1 = SliderDataStoreFactory.getInstance();
-	GenericStore<Sentence> store2 = SentenceStoreFactory.getInstance();
+	//GenericStore<SliderData> store1 = SliderDataStoreFactory.getInstance();
+	GenericStore<Sentence> store = SentenceStoreFactory.getInstance();
 
-	/**
-	 * Gets all Visitors.
-	 * REST API example:
-	 * <code>
-	 * GET http://localhost:9080/GetStartedJava/api/visitors
-	 * </code>
-	 *
-	 * Response:
-	 * <code>
-	 * [ "Bob", "Jane" ]
-	 * </code>
-	 * @return A collection of all the Visitors
-	 */
 	@GET
 	@Path("/")
 	@Produces({"application/json"})
 	public String getSliderContent() {
 
-		if (store1 == null) {
+		if (store == null) {
 			return "[]";
 		}
 
-		List<SliderData> wordData = new ArrayList<>();
-		for (SliderData doc : store1.getAll()) {
+		/*List<Sentence> wordData = new ArrayList<>();
+		for (Sentence doc : store.getAll()) {
 			wordData.add(doc);
-		}
+		}*/
 
-		return new Gson().toJson(wordData);
+        Sentence ourData = store.get("1525645375638");
+
+		return new Gson().toJson(ourData);
 	}
 
 }
