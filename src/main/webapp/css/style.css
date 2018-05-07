@@ -30,7 +30,7 @@
     margin: 8px 8px 20px 0;
     padding: 0 12px 0 12px;
     box-sizing: border-box;
-    max-width: 100%;
+    max-width: 100vw;
     position: relative;
     background: rgb(224,224,224);
     color: rgb(66,66,66);
@@ -39,7 +39,6 @@
     vertical-align: middle;
     z-index: 1;
     max-height: 22vh;
-    overflow: scroll;
 }
 
 /*-----Loading Spinner-----*/

@@ -136,7 +136,7 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
         stream.stop();
         console.log('---------Stopping Stream...----------');
         //Send final sentence to DB for further processing in Java backend
-         $http({
+         $scope.postTranslation = function() {$http({
           method: 'POST',
           url: 'api/sentenceAPI',
           data: JSON.stringify({
@@ -148,6 +148,7 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
           }
          })
          console.log("POST: " + $scope.capturedSentence)
+        }
         console.log('Final Sentence: ' + $scope.capturedSentence)
        }
        //Enable Translate button
@@ -252,3 +253,24 @@ console.log(wordCount);
  }
 
 })
+
+app.directive("contenteditable", function() {
+  return {
+    restrict: "A",
+    require: "ngModel",
+    link: function(scope, element, attrs, ngModel) {
+
+      function read() {
+        ngModel.$setViewValue(element.html());
+      }
+
+      ngModel.$render = function() {
+        element.html(ngModel.$viewValue || "");
+      };
+
+      element.bind("blur keyup change", function() {
+        scope.$apply(read);
+      });
+    }
+  };
+});
