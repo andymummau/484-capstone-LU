@@ -175,8 +175,8 @@
 	position: absolute;
 	bottom: 0px;
 	z-index: 10;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	background: #fff;
 	text-align: center;
 	width: 100%;
@@ -184,9 +184,9 @@
 .carousel-caption .btn {
 	text-shadow: none;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 770px) {
     .carouselVideo {
-        height: 40vh;
+        height: 54vh;
         margin: auto;
     }
     .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
@@ -201,15 +201,27 @@
 	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
 		margin-right: -10px;
 	}
-	.carousel-caption {
-		right: 20%;
-		left: 20%;
-		padding-bottom: 30px;
-	}
 	.carousel-indicators {
 		bottom: 20px;
 	}
 }
+
+@media screen and (max-width: 770px) {
+    .carouselVideo {
+        height: 80vh;
+        width: 100%;
+    }
+    
+    .carousel-caption {
+    padding-top: 30px;
+	padding-bottom: 30px
+    }
+}
+
+.md-actions {
+    margin-bottom: 0;
+}
+
 .glyphicon {
 	position: relative;
 	top: 1px;

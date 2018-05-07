@@ -1,32 +1,33 @@
 <md-dialog id="translateDialog">
-    <md-content class="md-padding">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
-        </md-toolbar>
-        <md-card id="transSlider" layout="column" layout-align="center center" style="padding-bottom: 10px" >
-<div>
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-          <video class="carouselVideo" autoplay loop muted style="width: 100vw;">
-            <source ng-src="{{slide.image}}" type="video/mp4">
+  <md-content class="md-padding">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
+    </md-toolbar>
+    <md-card id="transSlider" layout="column" layout-align="center center">
+
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+          <video class="carouselVideo" autoplay loop muted>
+            <source class="carouselVideo" ng-src="{{slide.image}}" type="video/mp4">
             <p class="warning">Your browser does not support HTML5 video.</p>
           </video>
-        <div class="carousel-caption">
-          <span md-headline style="margin: 0px;">{{slide.text}}</span>
+          <div class="carousel-caption">
+            <span md-headline style="margin: 0px;">{{slide.text}}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+        
       <md-button ng-hide="pauseButton" class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="pauseCarousel()">
-          <md-icon md-svg-src="images/ic_pause_white_48px.svg"></md-icon>
-        </md-button>   
-            <md-button ng-hide="playButton" class="md-fab md-fab-bottom-left" aria-label="Play" ng-click="playCarousel()">  
+        <md-icon md-svg-src="images/ic_pause_white_48px.svg"></md-icon>
+      </md-button>   
+      <md-button ng-hide="playButton" class="md-fab md-fab-bottom-left" aria-label="Play" ng-click="playCarousel()">  
         <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
-        </md-button> 
-        </md-card>
-    </md-content>
-    <div class="md-actions" layout="row">
-        <md-button ng-click="cancelLoadingIcon(); close(); disableTrans(); clearSentenceDisable()"> {{mNewTran}} </md-button>
-        <md-button ng-click="cancelLoadingIcon(); close()" class="md-raised md-primary"> {{mClose}} </md-button>
-    </div>
+      </md-button> 
+    </md-card>
+  </md-content>
+    
+  <div class="md-actions" layout="row">
+    <md-button ng-click="cancelLoadingIcon(); close(); disableTrans(); clearSentenceDisable()"> {{mNewTran}} </md-button>
+    <md-button ng-click="cancelLoadingIcon(); close()" class="md-raised md-primary"> {{mClose}} </md-button>
+  </div>
 </md-dialog>
