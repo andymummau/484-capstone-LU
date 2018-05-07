@@ -7,7 +7,7 @@
 
       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
         <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-          <video class="carouselVideo" autoplay loop muted>
+          <video class="carouselVideo" autoplay="autoplay" loop="loop" muted playsinline="playsinline">
             <source class="carouselVideo" ng-src="{{slide.image}}" type="video/mp4">
             <p class="warning">Your browser does not support HTML5 video.</p>
           </video>

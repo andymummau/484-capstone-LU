@@ -13,7 +13,7 @@
 </head>
     
 <body>
-<div ng-controller="AppCtrl" layout="column" ng-app="MyApp" ng-init="selectLanguage($event)" layout-fill>
+<div ng-controller="AppCtrl" layout="column" ng-app="MyApp" ng-init="selectLanguage($event)" layout-fill >
 <md-content>
     <md-toolbar class="md-hue-2">
       <div class="md-toolbar-tools">
@@ -35,7 +35,6 @@
               <div contenteditable="true" id="diyChip" ng-model="capturedSentence"></div>
             <div class="Absolute-Center" layout="column" layout-align="center center">                
                 <md-button layout="column" ng-hide="loading" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); clearSentenceActive()">
-                    <md-tooltip md-direction="top" md-visible="false" md-autohide="false">{{mActivate}}</md-tooltip>
                     <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
                 </md-button>  
                 <p class="md-headline" ng-hide="loading" layout="column" layout-align="end center">{{mHold}}</p>
