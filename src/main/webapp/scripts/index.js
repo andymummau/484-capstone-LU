@@ -169,7 +169,8 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
 
 //-----View Translation pop-up dialog-----
  $scope.viewTranslation = function(ev) {
-  $http.get("api/sentenceAPI") //api/results
+  $timeout(function () {
+     $http.get("api/sentenceAPI", {cache: false}) //api/results
     //If DB call is successful
     .then(function(response) {
      $scope.translationResults = response.data;
@@ -205,6 +206,7 @@ console.log(wordCount);
   });
  }
     })
+  }, 6000);
  };
 
 //-----Disable/Show UI elements as needed-----
