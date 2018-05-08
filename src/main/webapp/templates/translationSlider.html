@@ -1,33 +1,40 @@
+<!--Translation slider pop-up dialog-->
 <md-dialog id="translateDialog">
-  <md-content class="md-padding">
-    <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
-    </md-toolbar>
-    <md-card id="transSlider" layout="column" layout-align="center center">
-
-      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-          <video class="carouselVideo" autoplay="autoplay" loop="loop" muted playsinline="playsinline">
-            <source class="carouselVideo" ng-src="{{slide.image}}" type="video/mp4">
-            <p class="warning">Your browser does not support HTML5 video.</p>
-          </video>
-          <div class="carousel-caption">
-            <span md-headline style="margin: 0px;">{{slide.text}}</span>
-          </div>
-        </div>
-      </div>
+    <md-content class="md-padding">
         
-      <md-button ng-hide="pauseButton" class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="pauseCarousel()">
-        <md-icon md-svg-src="images/ic_pause_white_48px.svg"></md-icon>
-      </md-button>   
-      <md-button ng-hide="playButton" class="md-fab md-fab-bottom-left" aria-label="Play" ng-click="playCarousel()">  
-        <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
-      </md-button> 
-    </md-card>
-  </md-content>
+        <!--Header-->
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">{{mTransHeader}}</h1>
+        </md-toolbar>
+        
+        <md-card id="transSlider" layout="column" layout-align="center center">
+            
+            <!--Video slider with videos and english caption-->
+            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                    <video class="carouselVideo" autoplay="autoplay" loop="loop" muted playsinline="playsinline">
+                        <source class="carouselVideo" ng-src="{{slide.image}}" type="video/mp4">
+                        <p class="warning">Your browser does not support HTML5 video.</p>
+                    </video>
+                    <div class="carousel-caption">
+                        <span md-headline style="margin: 0px;">{{slide.text}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Pause and play buttons for video slider-->
+            <md-button ng-hide="pauseButton" class="md-fab md-fab-bottom-left" aria-label="Pause" ng-click="pauseCarousel()">
+                <md-icon md-svg-src="images/ic_pause_white_48px.svg"></md-icon>
+            </md-button>   
+            <md-button ng-hide="playButton" class="md-fab md-fab-bottom-left" aria-label="Play" ng-click="playCarousel()">  
+                <md-icon md-svg-src="images/ic_play_arrow_white_48px.svg"></md-icon>
+            </md-button> 
+        </md-card>
+    </md-content>
     
-  <div class="md-actions" layout="row">
-    <md-button ng-click="cancelLoadingIcon(); close(); disableTrans(); clearSentenceDisable()"> {{mNewTran}} </md-button>
-    <md-button ng-click="cancelLoadingIcon(); close()" class="md-raised md-primary"> {{mClose}} </md-button>
-  </div>
+    <!--New translation and close dialog action buttons-->
+    <div class="md-actions" layout="row">
+        <md-button ng-click="cancelLoadingIcon(); close(); disableTrans(); clearSentenceDisable()"> {{mNewTran}} </md-button>
+        <md-button ng-click="cancelLoadingIcon(); close()" class="md-raised md-primary"> {{mClose}} </md-button>
+    </div>
 </md-dialog>
