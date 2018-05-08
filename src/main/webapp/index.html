@@ -1,8 +1,10 @@
+<!--Primary interface file-->
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>Speech to ASL Translator</title>
+    
     <meta name="viewport" content="width=device-width">
     <link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
     <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
@@ -13,25 +15,30 @@
     
 <body>
 <div ng-controller="AppCtrl" layout="column" ng-app="MyApp" ng-init="selectLanguage($event)" layout-fill >
-<md-content>
+    
+    <!--Menu bar containing title + upload and language selection buttons-->
+    <md-content>
     <md-toolbar class="md-hue-2">
-      <div class="md-toolbar-tools">
-        <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translator</h2>
-        <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
-            <md-tooltip md-direction="bottom">{{mLanguage}}</md-tooltip>
-            <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
-        </md-button>
-        <md-button class="md-fab md-mini" aria-label="Upload" ng-click="upload($event)">
-            <md-tooltip md-direction="bottom">{{mUpload}}</md-tooltip>
-            <md-icon md-svg-src="images/ic_file_upload_white_48px.svg"></md-icon>
-        </md-button>
-      </div>
+        <div class="md-toolbar-tools">
+            <h2 flex="" md-truncate="ASL Translator">Speech to ASL Translator</h2>
+            <md-button class="md-fab md-mini" aria-label="Select Language" ng-click="selectLanguage($event)">
+                <md-tooltip md-direction="bottom">{{mLanguage}}</md-tooltip>
+                <md-icon md-svg-src="images/ic_language_white_48px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-mini" aria-label="Upload" ng-click="upload($event)">
+                <md-tooltip md-direction="bottom">{{mUpload}}</md-tooltip>
+                <md-icon md-svg-src="images/ic_file_upload_white_48px.svg"></md-icon>
+            </md-button>
+        </div>
     </md-toolbar>
-  </md-content>
-<md-content id="box" class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    </md-content>
+    
+    <md-content id="box" class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <md-card id="mdcardContainer" layout-fill flex-gt-sm="100" flex-gt-md="70">
+        
+        <!--Text input, mic button, and loading wheel area-->
         <md-card-content>
-              <div contenteditable="true" id="diyChip" ng-model="capturedSentence"></div>
+            <div contenteditable="true" id="diyChip" ng-model="capturedSentence"></div>
             <div class="Absolute-Center" layout="column" layout-align="center center">                
                 <md-button layout="column" ng-hide="loading" layout-align="center center" id="micbut" class="md-fab" aria-label="Activate Mic" ng-click="printSentence(); clearSentenceActive()">
                     <md-icon id="mic_icon" md-svg-src="images/ic_mic_white_48px.svg"></md-icon>
@@ -42,17 +49,20 @@
                 </div>
             </div>        
         </md-card-content>
+        
+        <!--Clear screen and Translate action buttons-->
         <md-card-actions id="cardActionsAlign" layout="row" layout-align="end end">
             <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans(); cancelLoadingIcon()" ng-disabled="true">{{mClear}}</md-button>
-                <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon(); postTranslation()">{{mTranslate}}</md-button>
-            </md-card-actions>
-      </md-card>
-</md-content>
+            <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon(); postTranslation()">{{mTranslate}}</md-button>
+        </md-card-actions>
+    </md-card>
+    </md-content>
 </div>
-<!--
-Copyright 2016 Google Inc. All Rights Reserved. 
-Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
--->
+    
+    
+<!--Copyright 2016 Google Inc. All Rights Reserved. 
+    Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.-->
+    
     <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js'></script>
     <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js'></script>
     <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js'></script>
@@ -62,6 +72,5 @@ Use of this source code is governed by an MIT-style license that can be foundin 
     <script src="scripts/watson-speech.js"></script>
     <script src="scripts/ui-bootstrap-tpls-2.5.0.js"></script>
     <script src="scripts/index.js"></script>
-
 </body>
 </html>
