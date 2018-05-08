@@ -53,8 +53,7 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
 
         try {
             System.out.println("Connecting to Cloudant");
-            CloudantClient client = ClientBuilder.url(new URL(url)).build();
-            return client;
+            return ClientBuilder.url(new URL(url)).build();
         } catch (Exception e) {
             System.out.println("Unable to connect to database");
             //e.printStackTrace();
