@@ -3,20 +3,19 @@ package wasdev.sample.store;
 import com.cloudant.client.api.ClientBuilder;
 import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import wasdev.sample.Sentence;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 
 public class CloudantSentenceStore implements GenericStore<Sentence> {
+
     private Database db = null;
     private static final String databaseName = "sentences";
 
+    // Create database
     public CloudantSentenceStore(){
         CloudantClient cloudant = createClient();
         if(cloudant!=null){
@@ -24,10 +23,12 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
         }
     }
 
+    // Return DB
     public Database getDB(){
         return db;
     }
 
+    // Create new cloudant client
     private static CloudantClient createClient() {
 
         String url;
@@ -61,6 +62,7 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
         }
     }
 
+    // Get entire database as a collection of sentences
     @Override
     public Collection<Sentence> getAll(){
         List<Sentence> docs;
@@ -72,25 +74,20 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
         return docs;
     }
 
+    // Get specific db entry by ID
     @Override
     public Sentence get(String id) {
         return db.find(Sentence.class, id);
     }
 
+    // Save new entry to DB
     @Override
     public Sentence persist(Sentence td) {
-        //String id = db.save(td).getId();
-        /*JsonObject json = new JsonObject();
-        Gson gson = new Gson();
-        gson.
-        json.addProperty("_id", td.getTranslationID());
-        json.addProperty("_rev", td.get_rev());
-        json.addProperty("fullSentence", td.getFullSentence());*/
-
         String id = db.save(td).getId();
         return db.find(Sentence.class, id);
     }
 
+    // Update DB entry with given ID
     @Override
     public Sentence update(String id, Sentence newSentence) {
         Sentence sentence = db.find(Sentence.class, id);
@@ -99,6 +96,7 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
 
     }
 
+    // Delete DB entry with given ID
     @Override
     public void delete(String id) {
         Sentence sentence = db.find(Sentence.class, id);
@@ -106,13 +104,9 @@ public class CloudantSentenceStore implements GenericStore<Sentence> {
 
     }
 
+    // Count number of entries in the DB
     @Override
     public int count() throws Exception {
         return getAll().size();
     }
-
-
-    /*public Sentence getByTranslateID(String transID) {
-        return db.find(Sentence.class, transID);
-    }*/
 }

@@ -7,10 +7,18 @@ public class SliderData {
     private String word;
     private String url;
 
+    // No-arg constructor
     public SliderData(){
 
     }
 
+    // Constructor
+    public SliderData(String word, String url) {
+        this.word = word;
+        this.url = url;
+    }
+
+    /** Begin getters/setters **/
     public String get_id() {
         return _id;
     }
@@ -27,28 +35,20 @@ public class SliderData {
         this._rev = _rev;
     }
 
-    public SliderData(String word, String url) {
-        this.word = word;
-        this.url = url;
+    public String getWord() {
+        return word;
     }
 
     public void setWord(String word) {
         this.word = word;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getWord() {
-        return word;
-    }
-
     public String getUrl() {
         return url;
     }
 
-    public String getJson() {
-        return "{word: " + word + ", url: " + url + "}";
+    public void setUrl(String url) {
+        this.url = url;
     }
+    /**End getters/setters**/
 }

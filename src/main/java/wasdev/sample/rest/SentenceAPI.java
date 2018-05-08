@@ -6,23 +6,23 @@ import wasdev.sample.SliderData;
 import wasdev.sample.store.GenericStore;
 import wasdev.sample.store.SentenceStoreFactory;
 import wasdev.sample.store.SliderDataStoreFactory;
-import com.cloudant.client.api.Database;
-
 import javax.ws.rs.*;
-/*import javax.ws.rs.core.Application;
-import java.util.ArrayList;
-import java.util.List;*/
 
 @ApplicationPath("api")
 @Path("/sentenceAPI")
 public class SentenceAPI {
 
-    static String transID;
+    // Stores translationID from last POST sentence store for GET retrieval
+    private static String transID;
 
-    //Our database store1
-    GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
-    GenericStore<SliderData> sliderDataStore = SliderDataStoreFactory.getInstance();
+    /************************************
+    sentenceStore is for new sentences.
+    sliderDataStore is for words and urls.
+    *************************************/
+    private GenericStore<Sentence> sentenceStore = SentenceStoreFactory.getInstance();
+    private GenericStore<SliderData> sliderDataStore = SliderDataStoreFactory.getInstance();
 
+    // Get/Set for transID
     public String getTransID() {
         return transID;
     }
@@ -31,6 +31,10 @@ public class SentenceAPI {
         this.transID = transID;
     }
 
+    /****************************************************************************
+    Receives new sentences from web interface and processes them for translation.
+    After processing, sentences are stored in the sentences database.
+     ****************************************************************************/
     @POST
     @Consumes("application/json")
     public void newSentence(Sentence sentence) {
@@ -41,6 +45,9 @@ public class SentenceAPI {
         sentenceStore.persist(sentence);
     }
 
+    /****************************************************************************
+     Returns sentence information from database as JSON.
+     ****************************************************************************/
     @GET
     @Path("/")
     @Produces({"application/json"})
@@ -50,20 +57,15 @@ public class SentenceAPI {
             return "[]";
         }
 
-        /*List<Sentence> ourData = new ArrayList<>();
-        for (Sentence doc : sentenceStore.getAll()) {
-            ourData.add(doc);
-        }*/
-
-        //System.out.println("getSliderContent:" + getTransID());
         Sentence ourData = sentenceStore.get(getTransID());
 
         return new Gson().toJson(ourData);
     }
 
-
+    /****************************************************************************
+     Matches words in a new sentence to words in the words-url database.
+     ****************************************************************************/
     private void matchWords(Sentence sentence) {
-        System.out.println("matchWords:" + getTransID());
         for (String word : sentence.getSentenceChunks()) {
             for (SliderData data : sliderDataStore.getAll()){
                 if(data.getWord().equals(word)) {
