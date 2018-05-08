@@ -170,11 +170,10 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
 //-----View Translation pop-up dialog-----
  $scope.viewTranslation = function(ev) {
   $timeout(function () {
-     $http.get("api/sentenceAPI", {cache: false}) //api/results
+     $http.get("api/sentenceAPI", {cache: false})
     //If DB call is successful
     .then(function(response) {
      $scope.translationResults = response.data;
-      console.log($scope.translationResults);
      console.log("Retriving Sentence from Database...");
      $mdDialog.show({
       controller: DialogController,
