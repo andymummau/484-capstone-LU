@@ -44,7 +44,7 @@
             </div>        
         </md-card-content>
         <md-card-actions id="cardActionsAlign" layout="row" layout-align="end end">
-            <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans()" ng-disabled="true">{{mClear}}</md-button>
+            <md-button id="clearButton" ng-click="clearSentenceDisable(); disableTrans(); cancelLoadingIcon()" ng-disabled="true">{{mClear}}</md-button>
                 <md-button id="transButton" class="md-raised md-primary" ng-disabled="true" ng-click="viewTranslation($event); loadingIcon(); postTranslation()">{{mTranslate}}</md-button>
             </md-card-actions>
       </md-card>
