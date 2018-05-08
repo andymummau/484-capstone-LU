@@ -1,5 +1,6 @@
 package wasdev.sample;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Sentence {
@@ -81,15 +82,12 @@ public class Sentence {
     // Splits sentence into words after trimming, see trimSentence
     private LinkedList<String> createSentenceChunks(String fullSentence) {
         String mySentence = trimSentence(fullSentence);
-        for(String s: mySentence.split(" ")) {
-            sentenceChunks.add(s);
-        }
+        sentenceChunks.addAll(Arrays.asList(mySentence.split(" ")));
         return sentenceChunks;
     }
 
     // Trims sentence and removes spaces and punctuation
     private String trimSentence(String fullSentence){
-        String trimmedSentence = fullSentence.trim().toLowerCase().replaceAll("[^a-zA-Z0-9 ]", "");
-        return trimmedSentence;
+        return fullSentence.trim().toLowerCase().replaceAll("[^a-zA-Z0-9 ]", "");
     }
 }
