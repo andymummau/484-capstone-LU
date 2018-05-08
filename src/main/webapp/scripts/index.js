@@ -1,6 +1,6 @@
 //-----Initalize AngularJS app-----
 var app = angular
- .module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngAnimate', 'ui', 'ngSanitize', 'ui.bootstrap']);
+ .module('MyApp', ['ngMaterial', 'material.svgAssetsCache', 'ngAnimate', 'ui', 'ui.bootstrap']);
 
 //-----Color Theming config-----
 app.config(function($mdThemingProvider) {
@@ -188,26 +188,27 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $htt
       clickOutsideToClose: true,
       fullscreen: true // Only for -xs, -sm breakpoints.
      })
-      var slides = $scope.slides = [];
- var currIndex = 0;
- var wordCount = $scope.translationResults.sentenceChunks.length;
-console.log(wordCount);
- var carouselUrl = $scope.translationResults.urls;
-      console.log(carouselUrl);
- var captionText = $scope.translationResults.sentenceChunks;
-      console.log(captionText);
+     //Retrieve final translation from database with URL
+        var slides = $scope.slides = [];
+        var currIndex = 0;
+        var wordCount = $scope.translationResults.sentenceChunks.length;
+        console.log("Word Count: " + wordCount);
+        var carouselUrl = $scope.translationResults.urls;
+        console.log("URLs: " + carouselUrl);
+        var captionText = $scope.translationResults.sentenceChunks;
+        console.log("Caption Text: " + captionText);
       
-       //Push each database item onto a stack for carousel to loop through
- for (var i = 0; i < wordCount; i++) {
-  slides.push({
-   image: carouselUrl[i],
-   text: captionText[i],
-   id: currIndex++
-  });
- }
-    })
-  }, 6000);
- };
+      //Push each database item onto a stack for carousel to loop through
+      for (var i = 0; i < wordCount; i++) {
+      slides.push({
+       image: carouselUrl[i],
+       text: captionText[i],
+       id: currIndex++
+      });
+     }
+        })
+      }, 6000);
+     };
 
 //-----Disable/Show UI elements as needed-----
   //Enable clear button after sentence is output
@@ -225,15 +226,6 @@ console.log(wordCount);
  }
 
 //-----Translation Carousel-----
-  //Retrieve final translation from database with URL
-  /*$scope.translationResults = {
-  "_id": "ea19d1becb5c9ce618a5eb4a7996253f",
-  "_rev": "2-ccf2dabc45645cba74e8fa13ef17bf2d",
-  "translationID": "201804051800",
-  "fullSentence": "the quick brown fox jumps over the lazy dog",
-  "sentenceChunks": ["brown", "fox", "jumps", "lazy", "dog"],
-  "url": ["videos/brown.mp4", "videos/fox.mp4", "videos/jumped.mp4", "videos/lazy.mp4", "videos/dog.mp4"]
- }*/
  //Carousel Parameters
  $scope.myInterval = 3000;
  $scope.pauseButton = false;
@@ -256,6 +248,7 @@ console.log(wordCount);
 
 })
 
+//-----Make DIV editable-----
 app.directive("contenteditable", function() {
   return {
     restrict: "A",
